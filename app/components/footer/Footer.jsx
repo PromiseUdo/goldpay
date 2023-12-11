@@ -27,7 +27,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-1">
                 <MdEmail />
-                <span className="">goldpayinvestment@gmail.com</span>
+                <span className="">enquiries@goldpayinvestment.com</span>
               </div>
               <div className="flex items-center gap-2 mt-4">
                 <FaInstagramSquare className="cursor-pointer" size={30} />
