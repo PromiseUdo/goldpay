@@ -6,7 +6,7 @@ const businesses = [
   {
     image: "/loan.jpg",
     title: "Loans",
-    desc: "Need funds for life's opportunities? Get up to ₦100 Million with our hassle-free, collateral-free Personal & Business loans. We guarantee swift approval for eligible salary earners in private and public sectors. Embrace life's chances with Rosabon today!",
+    desc: "Need funds for life's opportunities? Get up to ₦100 Million with our hassle-free, collateral-free Personal & Business loans. We guarantee swift approval for eligible salary earners in private and public sectors. Embrace life's chances with Goldpay Investment today!",
     list: [
       "Personal Loan",
       "Business Support Loan",
