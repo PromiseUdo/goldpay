@@ -6,6 +6,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Container from "./Container";
 import clsx from "clsx";
 import useOnClickOutside from "../hooks/clickOutside";
+import { usePathname } from "next/navigation";
+
 const pages = [
   {
     title: "About",
@@ -30,13 +32,15 @@ const pages = [
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
+
   const [isActive, setIsActive] = useState(false);
   const [mobileDropDown, setMobileDropdown] = useState(false);
   const mobileNav = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [pathName, setPathname] = useState("/");
 
   useOnClickOutside(mobileNav, () => setIsActive(false));
-
   const handleScroll = () => {
     if (window.scrollY > 0) {
       setIsScrolled(true);
@@ -50,13 +54,19 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    setPathname(pathname);
+  }, [pathname]);
+
   return (
     <div
       className={clsx(
-        "z-[999] fixed top-0 py-2 w-full transition-all duration-100",
+        "z-[999]  top-0 py-2 w-full transition-all duration-100",
         isScrolled
-          ? "bg-[rgb(32,36,65)] text-[#f7f7f7] shadow shadow-[#485293]"
-          : "bg-transparent text-[#f7f7f7]"
+          ? "bg-[rgb(32,36,65)]  shadow shadow-[#485293]"
+          : "bg-transparent text-[#f7f7f7]",
+        pathName === "/" ? "fixed text-[#f7f7f7]" : "sticky text-black"
       )}
     >
       <Container>
@@ -73,7 +83,12 @@ const Navbar = () => {
                     href={page.url}
                   >
                     {page.title}
-                    <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                    <span
+                      class={clsx(
+                        "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ",
+                        pathName === "/" ? "bg-[#f7f7f7]" : "bg-black"
+                      )}
+                    ></span>
                   </Link>
                 </li>
               ))}

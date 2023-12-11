@@ -1,3 +1,5 @@
+"use client";
+
 import Features from "./components/Features";
 import Hero from "./components/Hero";
 import LatestPosts from "./components/LatestPosts/LatestPosts";
