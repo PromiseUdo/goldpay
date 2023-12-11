@@ -7,7 +7,7 @@ const SuccessCount = () => {
     <section className="w-full py-20 flex items-center justify-center">
       <Container>
         <div className="w-full flex items-center justify-center">
-          <div className="h-[300px] w-[70%] px-12 py-12 rounded-xl bg-[#202441]">
+          <div className="h-[300px] w-[80%] 2xl:w-[70%] px-12 py-12 rounded-xl bg-[#202441]">
             <div className="w-full flex items-center justify-between h-full">
               <div>
                 <h2 className="max-w-lg text-4xl text-[#f7f7f7]">

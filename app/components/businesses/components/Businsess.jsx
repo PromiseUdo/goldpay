@@ -7,7 +7,7 @@ const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
   return (
     <div
       className={clsx(
-        "py-20   w-[70%] flex  items-center justify-between",
+        "py-20  w-[80%] 2xl:w-[70%] flex  items-center justify-between",
         row && "flex-row-reverse"
       )}
     >
