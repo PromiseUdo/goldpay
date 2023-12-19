@@ -15,12 +15,9 @@ const pages = [
   },
   {
     title: "Loans",
-    url: "/about",
+    url: "#",
   },
-  {
-    title: "Invest",
-    url: "/about",
-  },
+
   {
     title: "Contact",
     url: "/about",
@@ -66,7 +63,9 @@ const Navbar = () => {
         isScrolled
           ? "bg-[rgb(32,36,65)]  shadow shadow-[#485293]"
           : "bg-transparent text-[#f7f7f7]",
-        pathName === "/" ? "fixed text-[#f7f7f7]" : "sticky text-black"
+        pathName === "/"
+          ? "fixed text-[#f7f7f7]"
+          : "!bg-[rgb(32,36,65)]  sticky text-[#f7f7f7]"
       )}
     >
       <Container>

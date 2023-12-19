@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import BreadCrumb from "./components/BreadCrumb";
+import PageBanner from "../components/PageBanner";
 
 const About = () => {
   return (
     <div>
-      <BreadCrumb />
+      <PageBanner title="About Us" description="Get to know us better" />
     </div>
   );
 };

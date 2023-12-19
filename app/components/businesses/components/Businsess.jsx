@@ -12,8 +12,8 @@ const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
       )}
     >
       <div className="w-full relative flex flex-col items-center justify-center">
-        <div className="bg-[#505ca4] h-[20rem] w-[24rem] rounded-md ">
-          <div className="overflow-hidden flex flex-col items-center justify-center gap-4 relative bottom-4 right-4 bg-[#c1c1d1] h-[20rem] w-[24rem] rounded-md">
+        <div className="bg-[#505ca4] h-[20rem] w-[24rem] rounded-md  ">
+          <div className="overflow-hidden flex flex-col items-center aspect-square justify-center gap-4 relative bottom-4 right-4 bg-[#c1c1d1] h-[20rem] w-[24rem] rounded-md">
             <Image
               src={image}
               alt="loan image"
