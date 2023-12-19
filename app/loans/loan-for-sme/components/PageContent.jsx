@@ -15,19 +15,20 @@ const requirements = [
 
 const otherLoanOptions = [
   {
-    title: "Loan for SMEs",
+    title: "Loan for School Fees",
     description:
       " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
     url: "/loans/loan-for-sme",
-    image: "/sme.jpg",
+    image: "/loan-school-fees.jpg",
   },
   {
     title: "Loan for Salary Earners",
     description:
       " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
-    url: "/loans/loan-for-sme",
+    url: "/loans/loan-for-salary-earners",
     image: "/salary.avif",
   },
+
   {
     title: "Cash Advance",
     description:

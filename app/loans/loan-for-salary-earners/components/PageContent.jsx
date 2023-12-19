@@ -22,11 +22,11 @@ const otherLoanOptions = [
     image: "/sme.jpg",
   },
   {
-    title: "Loan for Salary Earners",
+    title: "Loan for School Fees",
     description:
       " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
     url: "/loans/loan-for-sme",
-    image: "/salary.avif",
+    image: "/loan-school-fees.jpg",
   },
   {
     title: "Cash Advance",

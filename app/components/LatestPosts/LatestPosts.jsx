@@ -1,6 +1,8 @@
 import React from "react";
 import Container from "../Container";
 import PostCard from "./components/PostCard";
+import { TbExternalLink } from "react-icons/tb";
+import Link from "next/link";
 
 const posts = [
   {
@@ -33,7 +35,7 @@ const LatestPosts = () => {
         <div className="w-full py-12">
           <div className="w-full">
             <h2 className="text-[#505ca4]  font-semibold text-4xl leading-relaxed">
-              Latest Posts
+              Latest from our Blog
             </h2>
             <div className="w-20 mt-1 h-[2px] bg-[#FFB600]"></div>
           </div>
@@ -50,9 +52,14 @@ const LatestPosts = () => {
             ))}
           </div>
           <div className="mt-8 w-full flex items-center justify-center">
-            <button className="shadow hover:shadow-md transition-all duration-100 border border-[#e5e5e5]  hover:bg-[#e5e5e5] py-2 px-4 rounded-md">
-              View blog
-            </button>
+            <Link
+              href="/"
+              className=" flex items-center gap-2 shadow hover:shadow-md transition-all duration-100 border border-[#e5e5e5]  hover:bg-[#e5e5e5] py-2 px-4 rounded-md"
+            >
+              <TbExternalLink />
+
+              <span>See our Blog</span>
+            </Link>
           </div>
         </div>
       </Container>

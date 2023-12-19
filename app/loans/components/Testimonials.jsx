@@ -7,7 +7,7 @@ const Testimonials = () => {
       <Container>
         <div className="w-full flex flex-col gap-8 my-12">
           <h3 className="text-center text-4xl text-[#505ca4] font-bold">
-            Testimonials
+            What our customers say
           </h3>
 
           <div className="w-full items-center flex gap-6">
@@ -23,7 +23,7 @@ const Testimonials = () => {
 
 const TestimonialCard = ({ message, author = "Gbenga" }) => {
   return (
-    <div className="border border-[#d9d9d980] flex items-center justify-center p-4 px-8 h-36 rounded-md">
+    <div className="border border-[#d9d9d980] hover:border-[#FFB600] transition-all duration-100 flex items-center justify-center p-4 px-8 h-44 rounded-md">
       <p className="italic text-sm leading-relaxed">
         &quot;Goldpay has been very friendly and helpful through out my
         University days&quot; - <span className="font-semibold">{author}</span>

@@ -1,12 +1,22 @@
-"use client";
-
 import React from "react";
-import PageBanner from "../components/PageBanner";
+import MissionAndVision from "./components/MissionAndVision";
+import PageIntro from "../components/PageIntro";
+import BreadCrumb from "../components/BreadCrumb";
+import OurBoard from "./components/OurBoard";
+import WhyUs from "./components/WhyUs";
 
 const About = () => {
   return (
     <div>
-      <PageBanner title="About Us" description="Get to know us better" />
+      <BreadCrumb />
+      <PageIntro
+        image="/handshake.jpg"
+        title="We are here to help you thrive in an evolving world"
+        descripton=""
+      />
+      <WhyUs />
+      <MissionAndVision />
+      <OurBoard />
     </div>
   );
 };

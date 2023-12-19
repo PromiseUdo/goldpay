@@ -20,11 +20,15 @@ const pages = [
 
   {
     title: "Contact",
-    url: "/about",
+    url: "/contact",
   },
   {
     title: "Blog",
-    url: "/about",
+    url: "/blog",
+  },
+  {
+    title: "Help",
+    url: "#",
   },
 ];
 

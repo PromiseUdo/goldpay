@@ -1,10 +1,10 @@
 import PageBanner from "@/app/components/PageBanner";
 import React from "react";
-import PageIntro from "../components/PageIntro";
+import PageIntro from "../../components/PageIntro";
 import BreadCrumb from "@/app/components/BreadCrumb";
 import PageContent from "./components/PageContent";
-import CTA from "./components/Cta";
-import Testimonials from "./components/Testimonials";
+import CTA from "../components/Cta";
+import Testimonials from "../components/Testimonials";
 
 const page = () => {
   return (
@@ -14,7 +14,13 @@ const page = () => {
         description="Get to know us better"
       /> */}
       <BreadCrumb />
-      <PageIntro />
+      <PageIntro
+        image="/loan-school-fees.jpg"
+        title="School Fees Loan"
+        descripton="Get a loan for your education with ease. Flexible repayment
+              options and competitive interest rates. Apply now to achieve your
+              academic goals."
+      />
       <PageContent />
       <CTA />
       <Testimonials />
