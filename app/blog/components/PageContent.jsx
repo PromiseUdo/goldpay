@@ -2,13 +2,20 @@ import Container from "@/app/components/Container";
 import React from "react";
 import { IoMdSearch } from "react-icons/io";
 import LastestBlogPostItem from "./LatestBlogPostItem";
+import BlogPostCard from "./BlogPostCard";
 
 const PageContent = () => {
   return (
     <div className="w-full">
       <Container>
-        <div className="w-full grid grid-custom-reverse  gap-8">
-          <div className="h-[800px] bg-[#f7f7f7] rounded-lg"></div>
+        <div className="w-full  grid grid-custom-reverse py-8 px-8 gap-5">
+          <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-3">
+            <BlogPostCard />
+            <BlogPostCard />
+            <BlogPostCard />
+            <BlogPostCard />
+            <BlogPostCard />
+          </div>
 
           <div className="h-[fit-content] bg-[#f7f7f7] shadow-md rounded-lg px-8 py-8 flex flex-col gap-2">
             <div className="flex items-center gap-4">
