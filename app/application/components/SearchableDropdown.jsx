@@ -43,7 +43,7 @@ const SearchableDropdown = ({
   };
 
   return (
-    <div className="dropdown ">
+    <div className="dropdowns ">
       <div className="control ">
         <div className="selected-value ">
           <input

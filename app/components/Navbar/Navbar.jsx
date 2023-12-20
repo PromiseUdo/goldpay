@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import Container from "./Container";
+import Container from "../Container";
 import clsx from "clsx";
-import useOnClickOutside from "../hooks/clickOutside";
+import useOnClickOutside from "../../hooks/clickOutside";
 import { usePathname } from "next/navigation";
+import MenuItems from "./components/MenuItems";
 
 const pages = [
   {
@@ -16,6 +17,28 @@ const pages = [
   {
     title: "Loans",
     url: "#",
+    submenu: [
+      {
+        title: "Personal Loans",
+        submenu: [
+          { title: "Loan for School Fees", url: "/loans/loan-for-fees" },
+          {
+            title: "Loan for Salary Earners",
+            url: "/loans/loan-for-salary-earners",
+          },
+        ],
+      },
+
+      {
+        title: "Business Loans ",
+        submenu: [
+          {
+            title: "Loan for SMEs",
+            url: "/loans/loan-for-sme",
+          },
+        ],
+      },
+    ],
   },
 
   {
@@ -79,22 +102,26 @@ const Navbar = () => {
           </Link>
           <div className="  items-center hidden md:flex">
             <ul className="flex items-center gap-[1.7rem] text-[1.2rem] ">
-              {pages.map((page, idx) => (
-                <li key={idx}>
-                  <Link
-                    className="font-extralight	 group  transition duration-300"
-                    href={page.url}
-                  >
-                    {page.title}
-                    <span
-                      class={clsx(
-                        "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ",
-                        pathName === "/" ? "bg-[#f7f7f7]" : "bg-black"
-                      )}
-                    ></span>
-                  </Link>
-                </li>
-              ))}
+              {pages.map((page, idx) => {
+                const depthLevel = 0;
+                return (
+                  <MenuItems items={page} key={idx} depthLevel={depthLevel} />
+                  // <li key={idx}>
+                  //   <Link
+                  //     className="font-extralight	 group  transition duration-300"
+                  //     href={page.url}
+                  //   >
+                  //     {page.title}
+                  //     <span
+                  //       class={clsx(
+                  //         "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ",
+                  //         pathName === "/" ? "bg-[#f7f7f7]" : "bg-black"
+                  //       )}
+                  //     ></span>
+                  //   </Link>
+                  // </li>
+                );
+              })}
               <li className="bg-[#FFB600] rounded-3xl text-black px-4 py-2  transition-all duration-100">
                 <Link href="/careers" className="	font-semibold">
                   Join Us

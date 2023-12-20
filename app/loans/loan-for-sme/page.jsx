@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials";
 const page = () => {
   return (
     <div>
-      <BreadCrumb />
+      <BreadCrumb plainTextPages={["loans"]} />
       <PageIntro
         image="/sme.jpg"
         title="Loan for SMEs"

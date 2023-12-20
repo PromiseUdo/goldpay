@@ -4,8 +4,9 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Container from "./Container";
+import clsx from "clsx";
 
-const BreadCrumb = () => {
+const BreadCrumb = ({ plainTextPages = [] }) => {
   const pathname = usePathname();
   const segments = pathname.split("/");
 
@@ -13,16 +14,23 @@ const BreadCrumb = () => {
   const breadcrumbLinks = segments.map((segment, i) => {
     url += `/${segment}`;
     const isLast = i === segments.length - 1;
+    const isPlainText = plainTextPages.includes(segment);
 
     return (
       <React.Fragment key={i}>
-        <Link
-          className=" hover:underline"
-          href={`http://localhost:3000/${url}`}
-        >
-          {segment === "" ? "Home" : segment}
-        </Link>
-        {!isLast && <span className="separator ">/</span>}
+        {isPlainText ? (
+          <span className="text-[#d7d7d7]">
+            {segment === "" ? "Home" : segment}
+          </span>
+        ) : (
+          <Link
+            className={clsx("hover:underline")}
+            href={`http://localhost:3000/${url}`}
+          >
+            {segment === "" ? "Home" : segment}
+          </Link>
+        )}
+        {!isLast && <span className="separator">/</span>}
       </React.Fragment>
     );
   });

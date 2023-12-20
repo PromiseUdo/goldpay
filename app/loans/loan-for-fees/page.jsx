@@ -13,7 +13,7 @@ const page = () => {
         title="Get Loan For School Fees"
         description="Get to know us better"
       /> */}
-      <BreadCrumb />
+      <BreadCrumb plainTextPages={["loans"]} />
       <PageIntro
         image="/loan-school-fees.jpg"
         title="School Fees Loan"

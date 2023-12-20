@@ -1,6 +1,6 @@
 import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/footer/Footer";
 
 const grotesk = Hanken_Grotesk({ subsets: ["latin"] });

@@ -12,7 +12,7 @@ const PageIntro = ({ title, description }) => {
           className="text-[#f7f7f7] w-full flex flex-col gap-3
         "
         >
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 items-center">
             <h1 className="text-[#f7f7f7] text-4xl">{title}</h1>
             <p className="text-[#f7f7f7] ">{description}</p>
           </div>

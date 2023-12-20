@@ -6,10 +6,10 @@ import ApplicationForm from "../components/ApplicationForm";
 const page = () => {
   return (
     <div>
-      <BreadCrumb />
+      <BreadCrumb plainTextPages={["application"]} />
       <PageIntro
         title={"Loan Application Form"}
-        description={"Tailored to your needs"}
+        description={"Kindly fill out the Loan Application Form below"}
       />
 
       <ApplicationForm />

@@ -65,7 +65,11 @@ const Features = () => {
               </h2>
 
               <div>
-                <Link className="flex items-center gap-2" href="/">
+                <Link
+                  target="_blank"
+                  className="flex items-center gap-2"
+                  href="/application/loan"
+                >
                   <span className="text-lg font-semibold text-[#505ca4] hover:underline">
                     Apply Now
                   </span>
