@@ -1,7 +1,8 @@
 import "../globals.css";
 import { Poppins } from "next/font/google";
 import clsx from "clsx";
-import "./styles/styles.css";
+
+// import styles from "./styles/styles.module.css";
 import Footer from "./components/Footer";
 // import Navbar from "../components/Navbar/Navbar";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
@@ -18,7 +19,7 @@ export default function BlogLayout({ children }) {
   return (
     <section>
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 }

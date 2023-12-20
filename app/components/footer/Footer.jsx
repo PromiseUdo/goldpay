@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section id="footer" className=" w-full text-[#f7f7f7] bg-[#202441] py-20">
+    <section className=" genFoot w-full text-[#f7f7f7] bg-[#202441] py-20">
       <Container>
         <div className="w-full flex">
           <div className="pr-8 grow flex flex-col gap-4">

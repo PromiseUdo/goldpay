@@ -53,7 +53,8 @@ const LatestPosts = () => {
           </div>
           <div className="mt-8 w-full flex items-center justify-center">
             <Link
-              href="/"
+              href="/blog"
+              target="_blank"
               className=" flex items-center gap-2 shadow hover:shadow-md transition-all duration-100 border border-[#e5e5e5]  hover:bg-[#e5e5e5] py-2 px-4 rounded-md"
             >
               <TbExternalLink />

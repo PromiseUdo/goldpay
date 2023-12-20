@@ -8,7 +8,7 @@ const page = () => {
     <div>
       <BreadCrumb />
       <PageIntro
-        title={"Blog"}
+        title={"Our Blog"}
         descripton={
           "More for you to read about Finances, Investment and improve your Financial culture "
         }
