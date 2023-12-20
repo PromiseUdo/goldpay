@@ -4,8 +4,8 @@ import React from "react";
 
 const LastestBlogPostItem = ({ title, description, url, image }) => {
   return (
-    <div className="border flex border-[#d9d9d980] rounded-md gap-4 h-[6rem] px-2 py-2 shadow">
-      <div className="relative overflow-hidden rounded-md aspect-square h-full  w-[6rem]">
+    <div className="border flex border-[#d9d9d980] rounded-md gap-4 h-[6rem] px-1 py-2 shadow">
+      <div className="relative overflow-hidden rounded-md aspect-square h-full  w-[10rem]">
         <Image
           src={image}
           alt="sme business man"
@@ -15,7 +15,7 @@ const LastestBlogPostItem = ({ title, description, url, image }) => {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <h4 className="font-semibold text-md">{title}</h4>
+        <h4 className="font-semibold text-sm">{title}</h4>
         <p className="text-sm">
           {description}{" "}
           <Link href="/" className="text-sm hover:underline text-blue-600">

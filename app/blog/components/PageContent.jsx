@@ -8,22 +8,20 @@ const posts = [
   {
     image: "/sme.jpg",
     title: "Debt-Free Journey: Start 2024 With These Tips",
-    description:
-      "Read aboutdebt snowball and debt avalanche methods. Study success stories, practical tips...",
+    description: "Read aboutdebt snowball and debt avalanche methods...",
     date: "",
   },
   {
     image: "/thinking.jpg",
     title: "6 Habits to Level up your finances",
     description:
-      "In today's fast-paced world, mastering your financial habits isessential for a secure and prosperous future.",
+      "In today's fast-paced world, mastering your financial habits....",
     date: "17th December, 2023",
   },
   {
     image: "/salary.avif",
     title: "How to Save Up from your Salary",
-    description:
-      "Unlock the secrets to effective salary saving with our quick guide! Learn practical tips...",
+    description: "Unlock the secrets to effective salary saving with ...",
     date: "17th December, 2023",
   },
   {
@@ -46,7 +44,7 @@ const PageContent = () => {
     <div className="w-full">
       <Container>
         <div className="w-full  grid grid-custom-reverse py-8 px-8 gap-5">
-          <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-3">
+          <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
             {posts.map((post, i) => (
               <BlogPostCard
                 image={post.image}
@@ -58,17 +56,17 @@ const PageContent = () => {
             ))}
           </div>
 
-          <div className="h-[fit-content] bg-[#f7f7f7] shadow-md rounded-lg px-8 py-8 flex flex-col gap-2">
+          <div className="h-[fit-content] w-full bg-[#f7f7f7] shadow-md rounded-lg px-4 py-8 flex flex-col gap-2">
             <div className="flex items-center gap-4">
               <div className="border flex items-center border-solid border-[#d9d9d980] h-10 px-2 py-2 gap-2 rounded-md outline-none">
                 <IoMdSearch color="#979797" />
                 <input
-                  className="text-sm border-none outline-none h-8 w-72 bg-[#f7f7f7]"
+                  className="text-sm border-none outline-none h-8  bg-[#f7f7f7]"
                   type="text"
                   placeholder="Search blog posts by title"
                 />
               </div>
-              <button className="uppercase bg-[#FFB600] px-4 py-2 rounded-md text-black">
+              <button className="text-sm uppercase bg-[#FFB600] px-2 py-2 rounded-md text-black">
                 Search
               </button>
             </div>
@@ -81,7 +79,7 @@ const PageContent = () => {
                   key={i}
                   title={"Get ahead of your finances"}
                   description={
-                    "Finances can be a vbery tricky thing to handle. However, ..."
+                    "Finances can be a very tricky thing to handle..."
                   }
                   image={"/handshake.jpg"}
                   url={"/"}
