@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="w-full text-[#f7f7f7] bg-[#202441] py-20">
+    <section id="footer" className=" w-full text-[#f7f7f7] bg-[#202441] py-20">
       <Container>
         <div className="w-full flex">
           <div className="pr-8 grow flex flex-col gap-4">
@@ -30,10 +30,15 @@ const Footer = () => {
                 <MdEmail />
                 <span className="">info@goldpayinvestment.com</span>
               </div>
-              <div className="flex items-center gap-2 mt-4">
-                <FaInstagramSquare className="cursor-pointer" size={30} />
-                <FaFacebookSquare className="cursor-pointer" size={30} />
-                <FaLinkedin className="cursor-pointer" size={30} />
+              <div className="flex flex-col items-start gap-2 mt-4">
+                <h4 className="text-xl text-[#f7f7f7] font-medium">
+                  Connect with us
+                </h4>
+                <div className="flex items-center gap-2 mt-1">
+                  <FaInstagramSquare className="cursor-pointer" size={30} />
+                  <FaFacebookSquare className="cursor-pointer" size={30} />
+                  <FaLinkedin className="cursor-pointer" size={30} />
+                </div>
               </div>
             </div>
           </div>

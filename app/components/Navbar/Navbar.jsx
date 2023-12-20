@@ -85,8 +85,9 @@ const Navbar = () => {
 
   return (
     <div
+      id="topNav"
       className={clsx(
-        "z-[999]  top-0 py-2 w-full transition-all duration-100",
+        " z-[999]  top-0 py-2 w-full transition-all duration-100",
         isScrolled
           ? "bg-[rgb(32,36,65)]  shadow shadow-[#485293]"
           : "bg-transparent text-[#f7f7f7]",

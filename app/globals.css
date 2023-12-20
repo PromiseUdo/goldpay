@@ -123,3 +123,11 @@ body {
   left: 100%;
   top: -7px;
 }
+@layer utilities {
+  .grid-custom {
+    grid-template-columns: 0.2fr 1fr;
+  }
+  .grid-custom-reverse {
+    grid-template-columns: 1fr 0.3fr;
+  }
+}
