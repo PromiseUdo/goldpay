@@ -24,3 +24,7 @@
 
 body {
 }
+
+.ReactCollapse--collapse {
+  transition: height 500ms;
+}

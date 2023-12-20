@@ -28,7 +28,7 @@ const pages = [
   },
   {
     title: "Help",
-    url: "#",
+    url: "/knowledge-center",
   },
 ];
 
@@ -96,7 +96,7 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="bg-[#FFB600] rounded-3xl text-black px-4 py-2  transition-all duration-100">
-                <Link href="/about" className="	font-semibold">
+                <Link href="/careers" className="	font-semibold">
                   Join Us
                 </Link>
               </li>

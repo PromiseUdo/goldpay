@@ -55,7 +55,9 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className="cursor-pointer ">Careers</span>
+                <Link href="/careers" className="cursor-pointer ">
+                  Careers
+                </Link>
               </div>
             </div>
           </div>
@@ -84,15 +86,21 @@ const Footer = () => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className=" cursor-pointer">Application Form</span>
+                <Link href="/application/loan" className=" cursor-pointer">
+                  Application Form
+                </Link>
               </div>
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className=" cursor-pointer ">Knowledge Center</span>
+                <Link href="/knowledge-center" className=" cursor-pointer ">
+                  Knowledge Center
+                </Link>
               </div>
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className=" cursor-pointer ">Privacy Policy</span>
+                <Link href="/privacy-policy" className=" cursor-pointer ">
+                  Privacy Policy
+                </Link>
               </div>
             </div>
           </div>

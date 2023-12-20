@@ -15,6 +15,7 @@ const page = () => {
         descripton="Get a loan for your education with ease. Flexible repayment
           options and competitive interest rates. Apply now to achieve your
           academic goals."
+        button={true}
       />
       <PageContent />
       <CTA />

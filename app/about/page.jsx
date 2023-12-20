@@ -13,6 +13,7 @@ const About = () => {
         image="/handshake.jpg"
         title="We are here to help you thrive in an evolving world"
         descripton=""
+        button={true}
       />
       <WhyUs />
       <MissionAndVision />

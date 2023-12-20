@@ -2,7 +2,7 @@ import Container from "@/app/components/Container";
 import Image from "next/image";
 import React from "react";
 
-const styles = "leading-loose text-sm ";
+const styles = "leading-relaxed text-sm ";
 const MissionAndVision = () => {
   return (
     <div className="w-full my-16">
@@ -12,7 +12,7 @@ const MissionAndVision = () => {
             <h3 className="text-xl font-semibold">Mission and Vision</h3>
 
             <div className="w-full flex items-center gap-12">
-              <div className="  py-12 px-8 w-[50%] h-64  flex flex-col gap-2 bg-gradient-to-r border border-blue-100 from-blue-200  to-white rounded-xl">
+              <div className="  py-4 2xl:py-12 px-8 w-[50%] h-64  flex flex-col gap-2 bg-gradient-to-r border border-blue-100 from-blue-200  to-white rounded-xl">
                 <Image
                   src="/mission.png"
                   height={64}
@@ -24,12 +24,12 @@ const MissionAndVision = () => {
                 <p className={styles}>
                   Our mission as a company is to meet the financial need of our
                   customers by providing competitive personal financial products
-                  and services, and maximizing our shareholder`s wealth while
-                  maintaining the highest ethical standard in corporate
+                  and services, and maximizing our shareholder&apos;s wealth
+                  while maintaining the highest ethical standard in corporate
                   behavior.
                 </p>
               </div>
-              <div className="py-12 px-8 w-[50%] h-64 flex flex-col gap-2 bg-gradient-to-r border border-green-100  from-green-200 to-white rounded-xl">
+              <div className="py-4 2xl:py-12 px-8 w-[50%] h-64 flex flex-col gap-2 bg-gradient-to-r border border-green-100  from-green-200 to-white rounded-xl">
                 <Image
                   src="/vision.png"
                   height={64}

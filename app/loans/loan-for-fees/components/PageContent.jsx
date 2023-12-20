@@ -2,6 +2,7 @@ import Container from "@/app/components/Container";
 import React from "react";
 import { MdChevronRight } from "react-icons/md";
 import LoanOption from "../../components/LoanOption";
+import Link from "next/link";
 
 const requirements = [
   "Utility Bill (not older than 3 months)",
@@ -62,9 +63,13 @@ const PageContent = () => {
             </ul>
 
             <div className="w-full my-4">
-              <button className="min-w-[150px] shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7] uppercase">
+              <Link
+                target="_blank"
+                href="/application/loan"
+                className="min-w-[150px] shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7] uppercase"
+              >
                 {"Click here to Apply"}
-              </button>
+              </Link>
             </div>
           </div>
           <div className="w-[50%]  px-4">

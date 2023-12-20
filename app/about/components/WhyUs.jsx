@@ -2,17 +2,17 @@ import Container from "@/app/components/Container";
 import Image from "next/image";
 import React from "react";
 
-const styles = "leading-loose text-sm ";
+const styles = "leading-relaxed text-sm ";
 const WhyUs = () => {
   return (
     <div className="w-full my-16">
       <Container>
         <div className="w-full flex items-center justify-center">
-          <div className="w-[80%]  flex flex-col gap-4">
+          <div className="w-[100%] 2xl:w-[80%]  flex flex-col gap-4 ">
             <h3 className="text-xl font-semibold">Why choose us</h3>
 
-            <div className="w-full flex items-center gap-12">
-              <div className="shadow-md py-12 px-8 grow h-64  flex flex-col gap-2 bg-[#00165A50]   rounded-xl">
+            <div className="w-full flex items-center gap-4 2xl:gap-12">
+              <div className="shadow-md py-4 2xl:py-12 px-8 grow h-52 justify-center flex flex-col gap-2 bg-[#00165A50]   rounded-xl">
                 <h4 className="font-semibold bg-[#00165A20] px-2 py-1 rounded-md w-[fit-content]">
                   Transparency
                 </h4>
@@ -24,7 +24,7 @@ const WhyUs = () => {
                   to make informed decisions about their finances.
                 </p>
               </div>
-              <div className="shadow-md  py-12 px-8 grow h-64 flex flex-col gap-2    bg-[#FFB60050] rounded-xl">
+              <div className="shadow-md  py-4 2xl:py-12 px-8 grow h-52 justify-center flex flex-col gap-2    bg-[#FFB60050] rounded-xl">
                 <h4 className="font-semibold bg-[#FFB60020]  px-2 py-1 rounded-md w-[fit-content]">
                   Tailored To Your Needs{" "}
                 </h4>
@@ -36,7 +36,7 @@ const WhyUs = () => {
                   future, we&apos;ve got you covered.
                 </p>
               </div>
-              <div className="shadow-md  py-12 px-8 grow h-64 flex flex-col gap-2  bg-[#80800050] rounded-xl">
+              <div className="shadow-md  py-4 2xl:py-12 px-8 grow h-52 flex flex-col gap-2  bg-[#80800050] rounded-xl justify-center">
                 <h4 className="font-semibold  px-2 py-1 rounded-md w-[fit-content] bg-[#80800020]">
                   Exceptional Customer Service
                 </h4>

@@ -23,7 +23,7 @@ const ContactFormMap = () => {
                   <span>Your Name</span>
                   <LuAsterisk color="#D22B2B" />
                 </label>
-                <div className="border flex items-center border-solid border-shopday-border h-10 px-2 py-2 gap-2 rounded-md outline-none">
+                <div className="border flex items-center border-solid border-[#d9d9d980] h-10 px-2 py-2 gap-2 rounded-md outline-none">
                   <FaRegUser color="#979797" />
                   <input
                     required
@@ -38,7 +38,7 @@ const ContactFormMap = () => {
                   <span>Your Email</span>
                   <LuAsterisk color="#D22B2B" />
                 </label>
-                <div className="border flex items-center border-solid border-shopday-border h-10 px-2 py-2 gap-2 rounded-md outline-none">
+                <div className="border flex items-center border-solid border-[#d9d9d980] h-10 px-2 py-2 gap-2 rounded-md outline-none">
                   <MdOutlineEmail color="#979797" />
                   <input
                     required
@@ -52,7 +52,7 @@ const ContactFormMap = () => {
                 <label className="text-sm flex items-center">
                   <span>Subject</span>
                 </label>
-                <div className="border flex items-center border-solid border-shopday-border h-10 px-2 py-2 gap-2 rounded-md outline-none">
+                <div className="border flex items-center border-solid border-[#d9d9d980] h-10 px-2 py-2 gap-2 rounded-md outline-none">
                   <MdOutlineSubject color="#979797" />
                   <input
                     required
@@ -67,7 +67,7 @@ const ContactFormMap = () => {
                   <span>Your Message</span>
                   <LuAsterisk color="#D22B2B" />
                 </label>
-                <div className="border flex items-center border-solid border-shopday-border h-24 px-2 py-2 gap-2 rounded-md outline-none">
+                <div className="border flex items-center border-solid border-[#d9d9d980] h-24 px-2 py-2 gap-2 rounded-md outline-none">
                   <FaRegMessage color="#979797" />
                   <textarea
                     style={{
