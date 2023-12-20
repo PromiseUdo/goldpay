@@ -8,7 +8,7 @@ import { FiSend } from "react-icons/fi";
 
 const ContactFormMap = () => {
   return (
-    <div className="w-full my-28">
+    <div className="w-full my-32">
       <div className="w-full h-[25rem] flex items-center">
         <div className="bg-[#202441] w-[50%] h-full flex items-center justify-center">
           <div className="z-20 w-[50%] rounded-lg h-[36rem] bg-[#f7f7f7] px-8 py-8 shadow-md ">

@@ -9,6 +9,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { MdChevronRight } from "react-icons/md";
 import { FaCalendarDay } from "react-icons/fa";
 import { MdAccessTimeFilled } from "react-icons/md";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -21,13 +22,13 @@ const Footer = () => {
               <h3 className="tracking-wider uppercase text-3xl font-semibold">
                 We&apos;re here to Help.
               </h3>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <FaPhone />
-                <span className="">+234 (0) 816 476 3362</span>
+                <span className="">08142555121</span>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <MdEmail />
-                <span className="">enquiries@goldpayinvestment.com</span>
+                <span className="">info@goldpayinvestment.com</span>
               </div>
               <div className="flex items-center gap-2 mt-4">
                 <FaInstagramSquare className="cursor-pointer" size={30} />
@@ -44,7 +45,9 @@ const Footer = () => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className=" cursor-pointer">About</span>
+                <Link href="/about" className=" cursor-pointer">
+                  About
+                </Link>
               </div>
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
@@ -62,7 +65,7 @@ const Footer = () => {
 
             <div className="flex flex-col gap-1">
               <h3 className="font-medium text-lg">Port Harcourt</h3>
-              <p className="">#23 Woji Road, PH</p>
+              <p className="">#74A Woji Road, PH</p>
             </div>
             <div className="flex flex-col gap-1">
               <h3 className="font-medium text-lg">Opening Hours</h3>
@@ -81,7 +84,7 @@ const Footer = () => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
-                <span className=" cursor-pointer">Application & Forms</span>
+                <span className=" cursor-pointer">Application Form</span>
               </div>
               <div className="flex items-center gap-1">
                 <MdChevronRight />{" "}
