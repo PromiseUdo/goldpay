@@ -22,9 +22,9 @@ const Footer = () => {
               height={115}
               width={115}
               alt="logo"
-              className="mx-auto "
+              className="lg:ml-0 mx-auto "
             />
-            <div className="flex items-center flex-col gap-2 ">
+            <div className="flex items-center lg:items-start flex-col gap-2 ">
               <h3 className="tracking-wider text-center lg:text-start uppercase text-2xl lg:text-3xl font-semibold">
                 We&apos;re here to Help.
               </h3>
@@ -49,7 +49,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 lg:gap-0 items-start grow">
+          <div className="flex flex-col lg:flex-row gap-3 lg:gap-0 items-start grow">
             <div className="flex flex-col gap-4 grow">
               <h2 className="text-xl lg:text-2xl font-medium">Our Company</h2>
               <div className="w-20  h-[2px] bg-[#FFB600]"></div>

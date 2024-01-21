@@ -9,21 +9,21 @@ const posts = [
     title: "FINANCIAL TIPS: make your worries go away",
     image: "/worry.jpg",
     snippet:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
     url: "/",
   },
   {
     title: "maybe it's time to get a new car",
     image: "/carbreakdown.jpg",
     snippet:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
     url: "/",
   },
   {
     title: "how we can help you get that home",
     image: "/newhome.jpg",
     snippet:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
     url: "/",
   },
 ];
