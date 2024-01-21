@@ -9,12 +9,12 @@ const OurBoard = () => {
     <div className="w-full my-16">
       <Container>
         <div className="w-full flex items-center justify-center">
-          <div className="w-[80%]  flex flex-col gap-4">
+          <div className="w-full lg:w-[80%]  flex flex-col gap-1  lg:gap-4">
             <h3 className="text-xl font-semibold">Our Team</h3>
 
-            <div className="w-full flex  items-center justify-center py-12 gap-20">
+            <div className="w-full flex flex-col md:flex-row  items-center justify-center py-8 lg:py-12 gap-8  lg:gap-20">
               <div className=" cursor-pointer group">
-                <div className="shadow relative aspect-square h-72 w-72 rounded-lg overflow-hidden">
+                <div className="shadow relative aspect-square h-60 w-60 lg:h-72 lg:w-72 rounded-lg overflow-hidden">
                   <Image
                     src="/chairman.jpg"
                     alt="chairman"
@@ -42,7 +42,7 @@ const OurBoard = () => {
               </div>
 
               <div className="cursor-pointer group">
-                <div className="shadow relative aspect-square h-72 w-72 rounded-lg overflow-hidden">
+                <div className="shadow relative aspect-square h-60 w-60 lg:h-72 lg:w-72  rounded-lg overflow-hidden">
                   <Image
                     src="/coo.jpg"
                     alt="chairman"
@@ -70,7 +70,7 @@ const OurBoard = () => {
               </div>
 
               <div className="cursor-pointer group">
-                <div className="shadow relative aspect-square h-72 w-72 rounded-lg overflow-hidden">
+                <div className="shadow relative aspect-square h-60 w-60 lg:h-72 lg:w-72  rounded-lg overflow-hidden">
                   <Image
                     src="/cao.jpg"
                     alt="chairman"

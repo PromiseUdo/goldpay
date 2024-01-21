@@ -8,11 +8,11 @@ const MissionAndVision = () => {
     <div className="w-full my-16">
       <Container>
         <div className="w-full flex items-center justify-center">
-          <div className="w-[80%]  flex flex-col gap-4">
+          <div className="w-full lg:w-[80%]  flex flex-col gap-4">
             <h3 className="text-xl font-semibold">Mission and Vision</h3>
 
-            <div className="w-full flex items-center gap-12">
-              <div className="  py-4 2xl:py-12 px-8 w-[50%] h-64  flex flex-col gap-2 bg-gradient-to-r border border-blue-100 from-blue-200  to-white rounded-xl">
+            <div className="w-full flex flex-col md:flex-row items-center gap-12">
+              <div className="  py-4 2xl:py-12 px-8 w-full lg:w-[50%] h-[fit-content] md:h-64  flex flex-col gap-2 bg-gradient-to-r border border-blue-100 from-blue-200  to-white rounded-xl">
                 <Image
                   src="/mission.png"
                   height={64}
@@ -29,7 +29,7 @@ const MissionAndVision = () => {
                   behavior.
                 </p>
               </div>
-              <div className="py-4 2xl:py-12 px-8 w-[50%] h-64 flex flex-col gap-2 bg-gradient-to-r border border-green-100  from-green-200 to-white rounded-xl">
+              <div className="py-4 2xl:py-12 px-8 w-full  lg:w-[50%] h-[fit-content] md:h-64 flex flex-col gap-2 bg-gradient-to-r border border-green-100  from-green-200 to-white rounded-xl">
                 <Image
                   src="/vision.png"
                   height={64}

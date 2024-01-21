@@ -9,9 +9,9 @@ const PageIntro = ({ image, title, descripton, url, button }) => {
     <div className="flex w-full  my-16 justify-center items-center">
       <Container>
         {/* <div className="flex items-center justify-center"> */}
-        <div className="flex w-full justify-center gap-28 px-20 items-center">
-          <div className="bg-[#505ca4] h-[20rem] w-[24rem] rounded-md  ">
-            <div className="overflow-hidden flex flex-col items-center aspect-square justify-center gap-4 relative bottom-4 right-4 bg-[#c1c1d1] h-[20rem] w-[24rem] rounded-md">
+        <div className=" flex flex-col lg:flex-row w-full justify-center gap-4 md:gap-12 lg:gap-28 lg:px-20 items-center">
+          <div className=" bg-[#505ca4] h-[12rem] w-[15rem] lg:h-[20rem] lg:w-[24rem] rounded-md  ">
+            <div className="overflow-hidden flex flex-col items-center aspect-square justify-center gap-4 relative bottom-4 right-4 bg-[#c1c1d1]  h-[12rem] w-[15rem] lg:h-[20rem] lg:w-[24rem] rounded-md">
               <Image
                 src={image}
                 alt="loan image"
@@ -22,9 +22,13 @@ const PageIntro = ({ image, title, descripton, url, button }) => {
             </div>
           </div>
 
-          <div className=" w-[fit-content] gap-4 flex flex-col items-start h-full px-20">
-            <h2 className=" text-5xl font-bold text-[#505ca4]">{title}</h2>
-            <p className="max-w-lg text-[#1e1c1c]">{descripton}</p>
+          <div className=" w-full lg:w-[fit-content] gap-4 flex flex-col items-center  lg:items-start h-full lg:px-20">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-[#505ca4]">
+              {title}
+            </h2>
+            <p className="text-center lg:text-start max-w-lg text-[#1e1c1c]">
+              {descripton}
+            </p>
             {button && (
               <Link
                 href="/application/loan"
