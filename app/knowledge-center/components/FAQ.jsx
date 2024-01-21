@@ -16,10 +16,10 @@ const FAQ = () => {
     setOpen(index);
   };
   return (
-    <div className="w-full py-12">
+    <div className="w-full py-8 lg:py-12">
       <Container>
         <div className="w-full flex items-center justify-center">
-          <div className="px-[40px] w-[60%]	">
+          <div className="lg:px-[40px] w-full lg:w-[60%]	">
             {faqs.map((faq, i) => (
               <AccordionItem
                 key={i}

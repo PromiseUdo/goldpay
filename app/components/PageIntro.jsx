@@ -6,7 +6,7 @@ import { FiExternalLink } from "react-icons/fi";
 
 const PageIntro = ({ image, title, descripton, url, button }) => {
   return (
-    <div className="flex w-full  my-16 justify-center items-center">
+    <div className="flex w-full my-4 md:my-8 lg:my-16 justify-center items-center">
       <Container>
         {/* <div className="flex items-center justify-center"> */}
         <div className=" flex flex-col lg:flex-row w-full justify-center gap-4 md:gap-12 lg:gap-28 lg:px-20 items-center">

@@ -8,11 +8,11 @@ const AccordionItem = ({ open, toggle, title, answer }) => {
     <div className="pt-[10px]">
       <div
         onClick={toggle}
-        className="bg-[#f7f7f7] py-[25px] px-[50px] shadow rounded-lg flex justify-between items-center cursor-pointer"
+        className="bg-[#f7f7f7] py-[25px] px-[10px] lg:px-[50px] shadow rounded-lg flex justify-between items-center cursor-pointer"
       >
-        <p className="text-[22px] font-semibold ">{title}</p>
+        <p className="text-lg lg:text-xl font-semibold ">{title}</p>
 
-        <div className="text-[30px]">
+        <div className="text-lg lg:text-xl">
           {open ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </div>
       </div>
