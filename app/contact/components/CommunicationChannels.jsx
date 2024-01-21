@@ -10,7 +10,7 @@ const CommunicationChannels = () => {
     <div className="w-full ">
       <Container>
         <div>
-          <div className="flex items-center gap-8 my-6">
+          <div className="flex items-center gap-8 my-2 lg:my-6">
             <div>
               <MdOutlineAccessTimeFilled size={30} color="#505ca4" />
             </div>
@@ -60,7 +60,7 @@ const CommunicationChannels = () => {
 
                 <div className="flex  flex-col items-end gap-1">
                   <h4 className="font-semibold">HEAD OFFICE</h4>
-                  <span className="font-light">
+                  <span className="font-light text-right lg:text-left">
                     75A Woji Rd. Port Harcourt, Rivers State
                   </span>
                 </div>

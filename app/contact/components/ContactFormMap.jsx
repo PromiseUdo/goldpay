@@ -8,10 +8,10 @@ import { FiSend } from "react-icons/fi";
 
 const ContactFormMap = () => {
   return (
-    <div className="w-full my-32">
-      <div className="w-full h-[25rem] flex items-center">
-        <div className="bg-[#202441] w-[50%] h-full flex items-center justify-center">
-          <div className="z-20 w-[50%] rounded-lg h-[36rem] bg-[#f7f7f7] px-8 py-8 shadow-md ">
+    <div className="w-full my-8  lg:my-32">
+      <div className="w-full h-[50rem] md:h-[25rem] flex flex-col md:flex-row items-center">
+        <div className="bg-[#202441] w-full md:w-[50%] h-full flex items-center justify-center">
+          <div className="z-20 w-full md:w-[70%] xl:w-[50%] rounded-none md:rounded-lg h-[36rem] bg-[#f7f7f7] px-8 py-8 shadow-md ">
             <h3 className="text-2xl font-semibold">Leave us a message</h3>
             <p className="text-sm leading-relaxed mt-2">
               Have any inquiries, kindly drop a message and we will respond
@@ -27,7 +27,7 @@ const ContactFormMap = () => {
                   <FaRegUser color="#979797" />
                   <input
                     required
-                    className="bg-[#f7f7f7] text-sm border-none outline-none h-8 w-full"
+                    className="bg-[#f7f7f7] focus:ring-0 text-sm border-none outline-none h-8 w-full"
                     type="text"
                     placeholder="Your Name"
                   />
@@ -42,9 +42,9 @@ const ContactFormMap = () => {
                   <MdOutlineEmail color="#979797" />
                   <input
                     required
-                    className="bg-[#f7f7f7] text-sm border-none outline-none h-8 w-full"
-                    type="text"
-                    placeholder="Your Name"
+                    className="bg-[#f7f7f7] focus:ring-0 text-sm border-none outline-none h-8 w-full focus:outline-none"
+                    type="email"
+                    placeholder="Your Email"
                   />
                 </div>
               </div>
@@ -56,9 +56,9 @@ const ContactFormMap = () => {
                   <MdOutlineSubject color="#979797" />
                   <input
                     required
-                    className="bg-[#f7f7f7] text-sm border-none outline-none h-8 w-full"
+                    className="bg-[#f7f7f7] focus:ring-0 focus:outline-none text-sm border-none outline-none h-8 w-full"
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="Your Subject"
                   />
                 </div>
               </div>
@@ -74,23 +74,24 @@ const ContactFormMap = () => {
                       resize: "none",
                     }}
                     required
-                    className="text-sm border-none outline-none h-[4rem] bg-[#f7f7f7] w-full"
+                    className="text-sm focus:ring-0 active:border-none  active:outline-none border-none outline-none h-[4rem] bg-[#f7f7f7] w-full"
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="Your Message"
                   />
                 </div>
               </div>
 
               <div className="flex items-center justify-end mt-3">
-                <button className="flex items-center gap-3 px-4 py-2 border border-[#FFB600] shadow bg-transparent rounded-3xl hover:bg-[#282e52] hover:border-[#282e52] hover:text-[#f7f7f7]">
+                <button className="flex items-center gap-3 px-4 py-2 shadow-md bg-[#505ca4] text-[#f7f7f7] rounded-md text-base md:text-lg hover:bg-[#282e52] transition-all duration-100">
                   <FiSend />
-                  <span>Send Message</span>
+
+                  <span className="text-sm">Send Message</span>
                 </button>
               </div>
             </form>
           </div>
         </div>
-        <div className="w-[50%] h-full">
+        <div className="w-full md:w-[50%]  h-full ">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d993.9061213271237!2d7.04800326961997!3d4.834368836030279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cda068514cc3%3A0x8a5a3b0c8815873e!2s46%20Woji%20Rd%2C%20Trans%20Amadi%2C%20Port%20Harcourt%20500102%2C%20Rivers!5e0!3m2!1sen!2sng!4v1703010603134!5m2!1sen!2sng"
             width="100%"

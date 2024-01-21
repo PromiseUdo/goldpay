@@ -42,8 +42,8 @@ const PageContent = () => {
   return (
     <div>
       <Container>
-        <div className="w-full flex gap-12">
-          <div className="w-[50%] flex flex-col gap-2">
+        <div className="w-full flex flex-col lg:flex-row py-8 gap-12">
+          <div className="w-full lg:w-[50%] flex flex-col gap-2">
             <p className="leading-relaxed">
               Our loan service for students is designed to help cover your
               school fees and ease the financial burden of pursuing your
@@ -73,8 +73,8 @@ const PageContent = () => {
               </Link>
             </div>
           </div>
-          <div className="w-[50%]  px-4">
-            <h3 className="text-3xl font-semibold mb-6 ">
+          <div className="w-full lg:w-[50%]  px-0 lg:px-4">
+            <h3 className="text-xl lg:text-3xl font-semibold mb-6 ">
               Explore Other Loan Options
             </h3>
 
