@@ -36,8 +36,8 @@ const Businesses = () => {
   return (
     <section className="bg-[#f2f2f2] w-full py-8">
       <Container>
-        <div className="py-12">
-          <h2 className="text-[#505ca4] font-semibold text-4xl leading-relaxed">
+        <div className="py-6 lg:py-12">
+          <h2 className="text-[#505ca4] font-semibold text-2xl lg:text-4xl leading-relaxed">
             Our Services Tailored For Your Needs
           </h2>
           <div className="w-20 mt-1 h-[2px] bg-[#FFB600]"></div>

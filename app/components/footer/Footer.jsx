@@ -16,7 +16,7 @@ const Footer = () => {
     <section className=" w-full text-[#f7f7f7] bg-[#202441] py-20">
       <Container>
         <div className="w-full flex flex-col-reverse gap-8 lg:gap-0  lg:flex-row">
-          <div className="pr-8 grow flex flex-col gap-4">
+          <div className="pr-0 lg:pr-8 grow flex flex-col gap-4">
             <Image
               src={"/logo.png"}
               height={115}
@@ -25,7 +25,7 @@ const Footer = () => {
               className="mx-auto "
             />
             <div className="flex items-center flex-col gap-2 ">
-              <h3 className="tracking-wider text-center lg:text-start uppercase text-3xl font-semibold">
+              <h3 className="tracking-wider text-center lg:text-start uppercase text-2xl lg:text-3xl font-semibold">
                 We&apos;re here to Help.
               </h3>
               <div className="flex items-center gap-2">
@@ -49,9 +49,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-start grow">
+          <div className="flex flex-col gap-3 lg:gap-0 items-start grow">
             <div className="flex flex-col gap-4 grow">
-              <h2 className="text-2xl font-medium">Our Company</h2>
+              <h2 className="text-xl lg:text-2xl font-medium">Our Company</h2>
               <div className="w-20  h-[2px] bg-[#FFB600]"></div>
 
               <div className="flex flex-col gap-2">
@@ -74,7 +74,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex flex-col gap-4 grow">
-              <h2 className="text-2xl font-medium">Office Locations</h2>
+              <h2 className="text-xl lg:text-2xl font-medium">
+                Office Locations
+              </h2>
               <div className="w-20  h-[2px] bg-[#FFB600]"></div>
 
               <div className="flex flex-col gap-1">
@@ -92,7 +94,9 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex flex-col gap-4 grow">
-              <h2 className="text-2xl font-medium">Help & Support</h2>
+              <h2 className="text-xl lg:text-2xl font-medium">
+                Help & Support
+              </h2>
               <div className="w-20 h-[2px] bg-[#FFB600]"></div>
 
               <div className="flex flex-col gap-2">

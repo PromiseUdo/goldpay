@@ -7,7 +7,7 @@ const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
   return (
     <div
       className={clsx(
-        "py-20  w-[80%] 2xl:w-[70%] flex flex-col lg:flex-row  items-center justify-between",
+        "py-10 lg:py-20  w-[80%] 2xl:w-[70%] flex flex-col lg:flex-row  items-center justify-between",
         row && "flex-row-reverse"
       )}
     >
@@ -24,8 +24,10 @@ const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-8  w-full">
-        <h2 className="text-[#505ca4]  text-4xl font-semibold">{title}</h2>
+      <div className="flex flex-col gap-2 lg:gap-8  w-full">
+        <h2 className="text-[#505ca4] mt-4 lg:mt-0 text-2xl lg:text-4xl font-semibold">
+          {title}
+        </h2>
         <div className="flex flex-col gap-4">
           <p className="max-w-lg leading-relaxed">{desc}</p>
           <ul className="flex flex-col gap-1 leading-relaxed">
