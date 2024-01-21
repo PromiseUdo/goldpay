@@ -79,11 +79,11 @@ const Hero = () => {
         <div className="flex flex-col items-start justify-center w-[100%] absolute md:w-[100%]  top-[40%] left-1/2 transform -translate-x-1/2  gap-3  ">
           <Container>
             <div className="flex flex-col gap-3">
-              <h1 className="text-[#f7f7f7] text-shadow-md text-6xl font-bold mb-4 ">
+              <h1 className="text-[#f7f7f7] text-shadow-md text-3xl md:text-4xl lg:text-6xl font-bold mb-4 ">
                 {slideContent[currentIndex].title}
               </h1>
               <div className="w-36 h-[2px] bg-[#FFB600]"></div>
-              <p className="text-[#f7f7f7] text-lg tracking-wide max-w-[100%] md:max-w-[60%] ">
+              <p className="text-[#f7f7f7] text-base md:text-lg tracking-wide max-w-[100%] md:max-w-[60%] ">
                 {slideContent[currentIndex].subtitle}
               </p>
             </div>

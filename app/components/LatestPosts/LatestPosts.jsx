@@ -34,13 +34,13 @@ const LatestPosts = () => {
       <Container>
         <div className="w-full py-12">
           <div className="w-full">
-            <h2 className="text-[#505ca4]  font-semibold text-4xl leading-relaxed">
+            <h2 className="text-[#505ca4]  font-semibold text-2xl lg:text-4xl leading-relaxed">
               Latest from our Blog
             </h2>
             <div className="w-20 mt-1 h-[2px] bg-[#FFB600]"></div>
           </div>
 
-          <div className="posts-container flex items-center justify-center gap-8">
+          <div className="mt-4 posts-container flex flex-col lg:flex-row items-center justify-center gap-8">
             {posts.map((post, idx) => (
               <PostCard
                 key={idx}

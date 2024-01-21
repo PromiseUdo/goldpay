@@ -4,7 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const PostCard = ({ image, title, snippet, url }) => {
   return (
-    <div className="bg-[#fff] shadow  hover:shadow-lg overflow-hidden  rounded-lg h-[450px] w-[450px] border border-[#d5d5d5] cursor-pointer transition-all duration-100">
+    <div className="bg-[#fff] shadow   hover:shadow-lg overflow-hidden w-full h-[250px] rounded-lg lg:h-[450px] lg:w-[450px] border border-[#d5d5d5] cursor-pointer transition-all duration-100">
       <div
         className="h-[60%] w-full"
         style={{

@@ -1,19 +1,407 @@
 "use client";
-
-import Container from "@/app/components/Container";
-import React, { useState } from "react";
+// import { ImageType, UploadedImageType } from "@/types/image";
+import axios from "axios";
+import Select from "react-select";
+import SelectImage from "../../components/inputs/SelectImage";
+import React, { useCallback, useEffect, useState } from "react";
 import { LuAsterisk } from "react-icons/lu";
-import SearchableDropdown from "./SearchableDropdown";
-import { gender, hearAboutUs, maritalStatus, statesData } from "./data";
-
+import toast from "react-hot-toast";
+import firebaseApp from "../../../libs/firebase";
+import geoData from "./geoData.json";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import {
+  FieldValues,
+  SubmitHandler,
+  Controller,
+  useForm,
+} from "react-hook-form";
 import "../styles/styles.css";
 import Image from "next/image";
 import clsx from "clsx";
 import Link from "next/link";
+import Container from "../../components/Container";
+import { useRouter } from "next/navigation";
 
 const ApplicationForm = () => {
-  const [value, setValue] = useState("");
   const [loanType, setLoanType] = useState("personal");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isCustomerCreated, setIsCustomerCreated] = useState(false);
+  const [cacDocument, setCacDocument] = useState();
+  const [guarantorPassportImage2, setGuarantorPassportImage2] = useState();
+  const [guarantorPassportImage1, setGuarantorPassportImage1] = useState();
+  const [customerPassportImage, setCustomerPassportImage] = useState();
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    control,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      alternatePhone: "",
+      gender: "",
+      dateOfBirth: "",
+      nextOfKin: "",
+      nextOfKinPhone: "",
+      country: "",
+      state: "",
+      lga: "",
+      address: "",
+      netMonthlyIncome: "",
+      purposeOfLoan: "",
+      desiredLoanAmount: "",
+      customerPassport: "",
+      guarantorName1: "",
+      guarantorPhone1: "",
+      guarantorPassport1: "",
+      guarantorName2: "",
+      guarantorPhone2: "",
+      guarantorPassport2: "",
+      cacDocument: "",
+      comments: "",
+      maritalStatus: "",
+      businessName: "",
+      businessType: "",
+      businessPhone: "",
+      businessAddress: "",
+      businessEmail: "",
+      cacNumber: "",
+      howYouHeard: "",
+      terms: "",
+    },
+  });
+  const selectedCountry = watch("country");
+  const selectedState = watch("state");
+
+  useEffect(() => {
+    setCustomValue("guarantorPassport1", guarantorPassportImage1);
+  }, [guarantorPassportImage1]);
+
+  useEffect(() => {
+    setCustomValue("guarantorPassport2", guarantorPassportImage2);
+  }, [guarantorPassportImage2]);
+  useEffect(() => {
+    setCustomValue("customerPassport", customerPassportImage);
+  }, [customerPassportImage]);
+  useEffect(() => {
+    setCustomValue("cacDocument", cacDocument);
+  }, [cacDocument]);
+
+  const onSubmit = async (data) => {
+    setIsLoading(true);
+    let uploadedCustomerImage = "";
+    let uploadedGuarantorImage1 = "";
+    let uploadedGuarantorImage2 = "";
+    let uploadedCacDocument = "";
+
+    console.log(data, "<<<<<<<<<<<<<<<<<<data");
+
+    const handleImageUploads = async () => {
+      toast("Sending your application, please wait...");
+      try {
+        // for (const item of data.images) {
+        if (data.customerPassport) {
+          const fileName =
+            new Date().getTime() + "-" + data.customerPassport.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(
+            storageRef,
+            data.customerPassport
+          );
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log("Error uploading customer image", error);
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedCustomerImage = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+
+        if (data.guarantorPassport1) {
+          const fileName =
+            new Date().getTime() + "-" + data.guarantorPassport1.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(
+            storageRef,
+            data.guarantorPassport1
+          );
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log("Error uploading Guarantor Passport 1", error);
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedGuarantorImage1 = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+
+        if (data.guarantorPassport2) {
+          const fileName =
+            new Date().getTime() + "-" + data.guarantorPassport2.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(
+            storageRef,
+            data.guarantorPassport2
+          );
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log("Error uploading Guarantor Passport 2", error);
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedGuarantorImage2 = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+        if (data.cacDocument) {
+          const fileName = new Date().getTime() + "-" + data.cacDocument.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(storageRef, data.cacDocument);
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log("Error uploading Cac Document", error);
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedCacDocument = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+      } catch (error) {
+        setIsLoading(false);
+        console.log("Error handling image uploads", error);
+        return toast.error("Error handling image uploads");
+      }
+    };
+
+    await handleImageUploads();
+
+    const userData = {
+      ...data,
+      customerPassport: uploadedCustomerImage,
+      guarantorPassport1: uploadedGuarantorImage1,
+      guarantorPassport2: uploadedGuarantorImage2,
+      cacDocument: uploadedCacDocument,
+      role: "CUSTOMER",
+      websiteReg: true,
+    };
+
+    console.log(userData, "<<<<<<<<<<<<<<<<user data");
+
+    axios
+      .post("/api/register-customer", userData)
+      .then(() => {
+        toast.success("Application successfully sent");
+        setIsCustomerCreated(true);
+        router.refresh();
+      })
+      .catch((error) => {
+        console.error("Error sending application:", error);
+
+        toast.error(
+          "Something went wrong while sending your application. Try again!"
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  const setCustomValue = (id, value) => {
+    setValue(id, value, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+  };
+
+  useEffect(() => {
+    if (isCustomerCreated) {
+      reset();
+      setGuarantorPassportImage2(null);
+      setCustomerPassportImage(null);
+      setGuarantorPassportImage1(null);
+      setCacDocument(null);
+      setIsCustomerCreated(false);
+    }
+  }, [isCustomerCreated]);
+
+  const newAccountOptions = {
+    username: { required: "Username is required" },
+    email: { required: "Email is required" },
+    firstname: { required: "Firstname is required" },
+    lastname: { required: "Lastname is required" },
+    phone: { required: "Phone number is required" },
+    password: {
+      required: "Password is required",
+      minLength: {
+        value: 8,
+        message: "Password must have at least 8 characters",
+      },
+    },
+  };
+
+  const addCustomerPassportToState = useCallback((value) => {
+    setCustomerPassportImage(value);
+  }, []);
+
+  const removeCustomerPassportFromState = useCallback((value) => {
+    setCustomerPassportImage(null);
+  }, []);
+  const addGuarantorPassport1ToState = useCallback((value) => {
+    setGuarantorPassportImage1(value);
+  }, []);
+
+  const removeGuarantorPassport1FromState = useCallback((value) => {
+    setGuarantorPassportImage1(null);
+  }, []);
+  const addGuarantorPassport2ToState = useCallback((value) => {
+    setGuarantorPassportImage2(value);
+  }, []);
+
+  const removeGuarantorPassport2FromState = useCallback((value) => {
+    setGuarantorPassportImage2(null);
+  }, []);
+
+  const addCacDocumentToState = useCallback((value) => {
+    setCacDocument(value);
+  }, []);
+
+  const removeCacDocumentFromState = useCallback((value) => {
+    setCacDocument(null);
+  }, []);
+
   return (
     <div className="w-full my-32">
       <Container>
@@ -30,9 +418,9 @@ const ApplicationForm = () => {
                 Personal Application
               </button>
               {loanType === "personal" && (
-                <span class="absolute flex h-3 w-3 top-[-5px] right-[-5px]">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                <span className="absolute flex h-3 w-3 top-[-5px] right-[-5px]">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
               )}
             </div>
@@ -48,9 +436,9 @@ const ApplicationForm = () => {
                 Business Application
               </button>
               {loanType === "business" && (
-                <span class="absolute flex h-3 w-3 top-[-5px] right-[-5px]">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                <span className="absolute flex h-3 w-3 top-[-5px] right-[-5px]">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                 </span>
               )}
             </div>
@@ -65,10 +453,19 @@ const ApplicationForm = () => {
                     <LuAsterisk color="#D22B2B" />
                   </label>
                   <input
-                    required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                    id="firstname"
+                    disabled={isLoading}
+                    {...register("firstname", newAccountOptions.firstname)}
                     type="text"
+                    name="firstname"
+                    required
                     placeholder="Firstname"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["firstname"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
                   />
                 </div>
                 <div>
@@ -77,49 +474,19 @@ const ApplicationForm = () => {
                     <LuAsterisk color="#D22B2B" />
                   </label>
                   <input
-                    required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                    id="lastname"
+                    disabled={isLoading}
+                    {...register("lastname", newAccountOptions.lastname)}
                     type="text"
-                    placeholder="Lastame"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm flex items-center">
-                    <span>Lastname</span>
-                    <LuAsterisk color="#D22B2B" />
-                  </label>
-                  <input
+                    name="lastname"
                     required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
-                    type="text"
                     placeholder="Lastname"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm flex items-center">
-                    <span>Gender</span>
-                    <LuAsterisk color="#D22B2B" />
-                  </label>
-                  <SearchableDropdown
-                    options={gender}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}
-                  />
-                </div>
-
-                <div>
-                  <label className="text-sm flex items-center">
-                    <span>Marital Status</span>
-                    <LuAsterisk color="#D22B2B" />
-                  </label>
-                  <SearchableDropdown
-                    options={maritalStatus}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["lastname"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
                   />
                 </div>
                 <div>
@@ -128,12 +495,123 @@ const ApplicationForm = () => {
                     <LuAsterisk color="#D22B2B" />
                   </label>
                   <input
-                    required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                    id="email"
+                    disabled={isLoading}
+                    {...register("email", { required: true })}
                     type="email"
+                    name="email"
+                    required
                     placeholder="Email"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["email"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
                   />
+                  <em>{errors["email"] && "Email is required"}</em>
                 </div>
+                <div>
+                  <label className="mb-1 text-sm flex items-center">
+                    <span>Gender</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <div>
+                    <Controller
+                      control={control}
+                      name="gender"
+                      rules={{ required: "Gender is required" }}
+                      render={({ field }) => (
+                        <div className="flex flex-col gap-1">
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="male"
+                                aria-label="Male"
+                              />
+                              <span className="text-sm ">Male</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="female"
+                                aria-label="Female"
+                              />
+                              <span className="text-sm ">Female</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="other"
+                                aria-label="Other"
+                              />
+                              <span className="text-sm ">Other</span>
+                            </label>
+                          </div>
+                        </div>
+                      )}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="mb-1 text-sm flex items-center">
+                    <span>Marital Status</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <div>
+                    <Controller
+                      control={control}
+                      name="maritalStatus"
+                      rules={{ required: "Gender is required" }}
+                      render={({ field }) => (
+                        <div className="flex flex-col gap-1">
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="single"
+                                aria-label="Single"
+                              />
+                              <span className="text-sm ">Single</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="married"
+                                aria-label="Married"
+                              />
+                              <span className="text-sm ">Married</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="divorced"
+                                aria-label="Divorced"
+                              />
+                              <span className="text-sm ">Divorced</span>
+                            </label>
+                          </div>
+                        </div>
+                      )}
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="text-sm flex items-center">
                     <span>Primary Phone Number</span>
@@ -153,9 +631,17 @@ const ApplicationForm = () => {
 
                     {/* <MdOutlineEmail color="#979797" /> */}
                     <input
-                      required
-                      className="bg-white text-sm border-none outline-none h-8 w-full"
+                      id="phone"
+                      disabled={isLoading}
+                      {...register("phone", { required: true })}
                       type="text"
+                      name="phone"
+                      className={clsx(
+                        "bg-white text-sm border-none outline-none h-8 w-full",
+                        errors["phone"]
+                          ? "border-rose-400 focus:border-rose-400"
+                          : "border-slate-300 focus:border-slate-300"
+                      )}
                       placeholder="Primary phone number"
                     />
                   </div>
@@ -179,21 +665,56 @@ const ApplicationForm = () => {
 
                     {/* <MdOutlineEmail color="#979797" /> */}
                     <input
-                      required
-                      className="bg-white text-sm border-none outline-none h-8 w-full"
+                      id="alternatePhone"
+                      disabled={isLoading}
+                      {...register("alternatePhone", { required: false })}
                       type="text"
+                      name="alternatePhone"
+                      required
+                      className={clsx(
+                        "bg-white text-sm border-none outline-none h-8 w-full"
+                      )}
                       placeholder="Alternate phone number"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="text-sm flex items-center">
+                    <span>Date Of Birth</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <input
+                    id="dateOfBirth"
+                    disabled={isLoading}
+                    {...register("dateOfBirth", { required: true })}
+                    type="date"
+                    name="dateOfBirth"
+                    required
+                    className={clsx(
+                      "bg-white text-sm  border  w-60 border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["dateOfBirth"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
                     <span>Next of Kin name</span>
                     <LuAsterisk color="#D22B2B" />
                   </label>
                   <input
-                    required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                    id="nextOfKin"
+                    disabled={isLoading}
+                    {...register("nextOfKin", { required: true })}
+                    name="nextOfKin"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["nextOfKin"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
                     type="text"
                     placeholder="Next of kin name"
                   />
@@ -217,49 +738,207 @@ const ApplicationForm = () => {
 
                     {/* <MdOutlineEmail color="#979797" /> */}
                     <input
+                      id="nextOfKinPhone"
+                      disabled={isLoading}
+                      {...register("nextOfKinPhone", { required: true })}
+                      name="nextOfKinPhone"
                       required
-                      className="bg-white text-sm border-none outline-none h-8 w-full"
+                      className={clsx(
+                        "bg-white text-sm border-none outline-none h-8 w-full",
+                        errors["nextOfKinPhone"]
+                          ? "border-rose-400 focus:border-rose-400"
+                          : "border-slate-300 focus:border-slate-300"
+                      )}
                       type="text"
                       placeholder="Next of kin phone number"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm flex items-center">
+                  <label className="mb-1 text-sm flex items-center">
                     <span>How did you hear about us?</span>
                     <LuAsterisk color="#D22B2B" />
                   </label>
-                  <SearchableDropdown
-                    options={hearAboutUs}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}
-                  />
+                  <div>
+                    <Controller
+                      control={control}
+                      name="howYouHeard"
+                      rules={{ required: "Select an option" }}
+                      render={({ field }) => (
+                        <div className="flex flex-col gap-1">
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="google"
+                                aria-label="Google"
+                              />
+                              <span className="text-sm ">Google</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="instagram"
+                                aria-label="instagram"
+                              />
+                              <span className="text-sm ">Instagram</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="facebook"
+                                aria-label="Facebook"
+                              />
+                              <span className="text-sm ">Facebook</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="referral"
+                                aria-label="Referral"
+                              />
+                              <span className="text-sm ">Referral</span>
+                            </label>
+                          </div>
+                          <div>
+                            <label className="flex items-center gap-2">
+                              <input
+                                type="radio"
+                                {...field}
+                                value="other"
+                                aria-label="Other"
+                              />
+                              <span className="text-sm ">Other</span>
+                            </label>
+                          </div>
+                        </div>
+                      )}
+                    />
+                  </div>
                 </div>
+                {/* country */}
+
                 <div>
                   <label className="text-sm flex items-center">
-                    <span>State of Origin</span>
+                    <span>Country</span>
                     <LuAsterisk color="#D22B2B" />
                   </label>
-                  <SearchableDropdown
-                    options={statesData}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}
+                  <Controller
+                    name="country"
+                    control={control}
+                    defaultValue={null}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        options={geoData.map((country) => ({
+                          label: country.name,
+                          value: country.iso2,
+                        }))}
+                        isClearable
+                        placeholder="Select country"
+                        onChange={(selectedOption) => {
+                          setValue("country", selectedOption);
+                          setValue("state", null); // Reset state on country change
+                        }}
+                      />
+                    )}
                   />
                 </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>State</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <Controller
+                    name="state"
+                    control={control}
+                    defaultValue={null}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        options={
+                          (
+                            geoData.find(
+                              (country) =>
+                                country.iso2 === selectedCountry?.value
+                            ) || {}
+                          ).states?.map((state) => ({
+                            label: state.name,
+                            value: state.state_code,
+                          })) || []
+                        }
+                        isClearable
+                        placeholder="Select state"
+                      />
+                    )}
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>LGA</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <Controller
+                    name="lga"
+                    control={control}
+                    defaultValue={null}
+                    render={({ field }) => (
+                      <Select
+                        {...field}
+                        options={
+                          (
+                            geoData.find(
+                              (country) =>
+                                country.iso2 === selectedCountry?.value
+                            ) || {}
+                          ).states
+                            ?.find(
+                              (state) =>
+                                state.state_code === selectedState?.value
+                            )
+                            ?.cities?.map((city) => ({
+                              label: city.name,
+                              value: city.id,
+                            })) || []
+                        }
+                        isClearable
+                        placeholder="Select LGA"
+                      />
+                    )}
+                  />
+                </div>
+
                 <div>
                   <label className="text-sm flex items-center">
                     <span>House Address</span>
                     <LuAsterisk color="#D22B2B" />
                   </label>
                   <input
-                    required
-                    className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                    id="address"
+                    disabled={isLoading}
+                    {...register("address", { required: true })}
                     type="text"
-                    placeholder="House Address"
+                    name="address"
+                    required
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["address"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                    placeholder="Address"
                   />
                 </div>
                 <div>
@@ -272,12 +951,20 @@ const ApplicationForm = () => {
                       <span>₦</span>
                     </div>
 
-                    {/* <MdOutlineEmail color="#979797" /> */}
                     <input
+                      id="netMonthlyIncome"
+                      disabled={isLoading}
+                      {...register("netMonthlyIncome", { required: true })}
+                      type="number"
+                      name="netMonthlyIncome"
                       required
-                      className="bg-white text-sm border-none outline-none h-8 w-full"
-                      type="text"
                       placeholder="Net Monthly Income"
+                      className={clsx(
+                        "bg-white text-sm border-none outline-none h-8 w-full",
+                        errors["netMonthlyIncome"]
+                          ? "border-rose-400 focus:border-rose-400"
+                          : "border-slate-300 focus:border-slate-300"
+                      )}
                     />
                   </div>
                 </div>
@@ -293,39 +980,169 @@ const ApplicationForm = () => {
 
                     {/* <MdOutlineEmail color="#979797" /> */}
                     <input
+                      id="desiredLoanAmount"
+                      disabled={isLoading}
+                      {...register("desiredLoanAmount", { required: true })}
+                      type="number"
+                      name="desiredLoanAmount"
                       required
-                      className="bg-white text-sm border-none outline-none h-8 w-full"
-                      type="text"
+                      className={clsx(
+                        "bg-white text-sm border-none outline-none h-8 w-full",
+                        errors["desiredLoanAmount"]
+                          ? "border-rose-400 focus:border-rose-400"
+                          : "border-slate-300 focus:border-slate-300"
+                      )}
                       placeholder="How much would you like to borrow"
                     />
                   </div>
                 </div>
+
                 <div>
                   <label className="text-sm flex items-center">
-                    <span>Purpose of the loan</span>
+                    <span>Purpose of Loan</span>
                     <LuAsterisk color="#D22B2B" />
                   </label>
-                  <SearchableDropdown
-                    options={statesData}
-                    label="name"
-                    id="id"
-                    selectedVal={value}
-                    handleChange={(val) => setValue(val)}
+                  <input
+                    id="purposeOfLoan"
+                    disabled={isLoading}
+                    {...register("purposeOfLoan", { required: true })}
+                    type="text"
+                    name="purposeOfLoan"
+                    required
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["purposeOfLoan"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                    placeholder="Purpose of Loan"
                   />
                 </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <div className="block">
+                      <SelectImage
+                        item={null}
+                        addImageToState={addCustomerPassportToState}
+                        removeImageFromState={removeCustomerPassportFromState}
+                        isUserCreated={false}
+                        label="Customer Passport"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div>
                   <label className="text-sm flex items-center">
-                    <span>Your Questions or Comments</span>
+                    <span>Name of Guarantor 1</span>
+                    <LuAsterisk color="#D22B2B" />
                   </label>
-                  <textarea
-                    required
-                    className="bg-white text-sm h-20 border  w-full border-solid border-[#d9d9d980]  px-2 py-2 rounded-md outline-none"
+                  <input
+                    id="guarantorName1"
+                    disabled={isLoading}
+                    {...register("guarantorName1", { required: true })}
                     type="text"
-                    style={{
-                      resize: "none",
-                    }}
-                    placeholder="Any questions or comments"
+                    name="guarantorName1"
+                    placeholder="Guarantor Name 1"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["guarantorName1"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
                   />
+                </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>Phone number of Guarantor 1</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <input
+                    id="guarantorPhone1"
+                    disabled={isLoading}
+                    {...register("guarantorPhone1", { required: true })}
+                    type="text"
+                    name="guarantorPhone1"
+                    placeholder="Phone number of Guarantor 1"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["guarantorPhone1"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <div className="block">
+                      <SelectImage
+                        item={null}
+                        addImageToState={addGuarantorPassport1ToState}
+                        removeImageFromState={removeGuarantorPassport1FromState}
+                        isUserCreated={false}
+                        label="Guarantor 1 Passport"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>Name of Guarantor 2</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <input
+                    id="guarantorName2"
+                    disabled={isLoading}
+                    {...register("guarantorName2", { required: true })}
+                    type="text"
+                    name="guarantorName2"
+                    placeholder="Guarantor Name 2"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["guarantorName2"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>Phone number of Guarantor 2</span>
+                    <LuAsterisk color="#D22B2B" />
+                  </label>
+                  <input
+                    id="guarantorPhone2"
+                    disabled={isLoading}
+                    {...register("guarantorPhone2", { required: true })}
+                    type="text"
+                    name="guarantorPhone2"
+                    placeholder="Phone number of Guarantor 2"
+                    className={clsx(
+                      "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                      errors["guarantorPhone2"]
+                        ? "border-rose-400 focus:border-rose-400"
+                        : "border-slate-300 focus:border-slate-300"
+                    )}
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <div className="block">
+                      <SelectImage
+                        item={null}
+                        addImageToState={addGuarantorPassport2ToState}
+                        removeImageFromState={removeGuarantorPassport2FromState}
+                        isUserCreated={false}
+                        label="Guarantor 2 Passport"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {loanType === "business" && (
@@ -336,38 +1153,100 @@ const ApplicationForm = () => {
                     <div>
                       <label className="text-sm flex items-center">
                         <span>Business name</span>
+
                         <LuAsterisk color="#D22B2B" />
                       </label>
                       <input
-                        required
-                        className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                        id="businessName"
+                        disabled={isLoading}
+                        {...register("businessName", {
+                          required: loanType === "business",
+                        })}
                         type="text"
-                        placeholder="Business name"
+                        name="businessName"
+                        required
+                        placeholder="Business Name"
+                        className={clsx(
+                          "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                          errors["businessName"]
+                            ? "border-rose-400 focus:border-rose-400"
+                            : "border-slate-300 focus:border-slate-300"
+                        )}
                       />
                     </div>
+
                     <div>
-                      <label className="text-sm flex items-center">
-                        <span>Type of Business</span>
+                      <label className="text-sm mb-3 flex items-center">
+                        <span>Business type</span>
                         <LuAsterisk color="#D22B2B" />
                       </label>
-                      <SearchableDropdown
-                        options={statesData}
-                        label="name"
-                        id="id"
-                        selectedVal={value}
-                        handleChange={(val) => setValue(val)}
-                      />
+                      <div>
+                        <Controller
+                          control={control}
+                          name="businessType"
+                          rules={{ required: loanType === "business" }}
+                          render={({ field }) => (
+                            <>
+                              <div>
+                                <label className="flex items-center gap-2">
+                                  <input
+                                    type="radio"
+                                    {...field}
+                                    value="Sole Proprietorship"
+                                  />
+                                  <span className="text-sm ">
+                                    Sole Proprietorship
+                                  </span>
+                                </label>
+                              </div>
+                              <div>
+                                <label className="flex items-center gap-2">
+                                  <input
+                                    type="radio"
+                                    {...field}
+                                    value="Partnership"
+                                  />
+                                  <span className="text-sm ">Partnership</span>
+                                </label>
+                              </div>
+                              <div>
+                                <label className="flex items-center gap-2">
+                                  <input
+                                    type="radio"
+                                    {...field}
+                                    value="Limited liability company"
+                                  />
+                                  <span className="text-sm ">
+                                    Limited liability company
+                                  </span>
+                                </label>
+                              </div>
+                            </>
+                          )}
+                        />
+                      </div>
                     </div>
+
                     <div>
                       <label className="text-sm flex items-center">
                         <span>Business Address</span>
                         <LuAsterisk color="#D22B2B" />
                       </label>
                       <input
-                        required
-                        className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
+                        id="businessAddress"
+                        disabled={isLoading}
+                        {...register("businessAddress", {
+                          required: loanType === "business",
+                        })}
                         type="text"
-                        placeholder="Business name"
+                        name="businessAddress"
+                        placeholder="Business address"
+                        className={clsx(
+                          "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                          errors["businessAddress"]
+                            ? "border-rose-400 focus:border-rose-400"
+                            : "border-slate-300 focus:border-slate-300"
+                        )}
                       />
                     </div>
                     <div>
@@ -389,29 +1268,99 @@ const ApplicationForm = () => {
 
                         {/* <MdOutlineEmail color="#979797" /> */}
                         <input
-                          required
-                          className="bg-white text-sm border-none outline-none h-8 w-full"
+                          id="businessPhone"
+                          disabled={isLoading}
+                          {...register("businessPhone", {
+                            required: loanType === "business",
+                          })}
                           type="text"
-                          placeholder="Business Phone number"
+                          name="businessPhone"
+                          required
+                          className={clsx(
+                            "bg-white text-sm border-none outline-none h-8 w-full",
+                            errors["businessPhone"]
+                              ? "border-rose-400 focus:border-rose-400"
+                              : "border-slate-300 focus:border-slate-300"
+                          )}
+                          placeholder="Business phone number"
                         />
                       </div>
-                      <span className="cursor-pointer underline text-sm italic">
-                        Click to fill same as above
-                      </span>
                     </div>
+
                     <div>
                       <label className="text-sm flex items-center">
-                        <span>CAC Registration Number</span>
+                        <span>Business Email</span>
+                        {/* <LuAsterisk color="#D22B2B" /> */}
                       </label>
                       <input
+                        id="businessEmail"
+                        disabled={isLoading}
+                        {...register("businessEmail", { required: false })}
+                        type="email"
+                        name="businessEmail"
                         required
+                        placeholder="Business Email"
                         className="bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none"
-                        type="text"
-                        placeholder="Business Phone number"
                       />
+                    </div>
+
+                    <div>
+                      <label className="text-sm flex items-center">
+                        <span>CAC registration number</span>
+                        <LuAsterisk color="#D22B2B" />
+                      </label>
+                      <input
+                        id="cacNumber"
+                        disabled={isLoading}
+                        {...register("cacNumber", {
+                          required: loanType === "business",
+                        })}
+                        type="text"
+                        name="cacNumber"
+                        required
+                        placeholder="CAC Number"
+                        className={clsx(
+                          "bg-white text-sm  border  w-full border-solid border-[#d9d9d980] h-10 px-2 py-2 rounded-md outline-none",
+                          errors["cacNumber"]
+                            ? "border-rose-400 focus:border-rose-400"
+                            : "border-slate-300 focus:border-slate-300"
+                        )}
+                      />
+                    </div>
+
+                    <div className="flex flex-col">
+                      <div className="flex items-center">
+                        <div className="block">
+                          <SelectImage
+                            item={null}
+                            addImageToState={addCacDocumentToState}
+                            removeImageFromState={removeCacDocumentFromState}
+                            isUserCreated={false}
+                            label="CAC Document"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}
+
+                <div>
+                  <label className="text-sm flex items-center">
+                    <span>Your Questions or Comments</span>
+                  </label>
+                  <textarea
+                    id="comments"
+                    disabled={isLoading}
+                    {...register("comments", { required: false })}
+                    name="comments"
+                    className="bg-white text-sm h-20 border  w-full border-solid border-[#d9d9d980]  px-2 py-2 rounded-md outline-none"
+                    type="text"
+                    style={{
+                      resize: "none",
+                    }}
+                    placeholder="Any questions or comments"
+                  />
+                </div>
 
                 <div className="flex flex-col gap-1">
                   <label className="text-sm flex items-center">
@@ -419,14 +1368,19 @@ const ApplicationForm = () => {
                     <LuAsterisk color="#D22B2B" />
                   </label>
 
-                  <div className="flex items-center gap-3 ">
+                  <div className="flex  items-center gap-3 ">
                     <input
-                      required
+                      id="terms"
+                      disabled={isLoading}
+                      {...register("terms", {
+                        required: true,
+                      })}
+                      name="terms"
                       type="checkbox"
                       className="w-4 h-4 rounded !text-[#FFB600]  border-2   hover:ring-0 focus:ring-0   "
                     />
                     <label
-                      htmlFor="type"
+                      htmlFor="terms"
                       className="text-sm select-none whitespace-nowrap"
                     >
                       I have read and accept the{" "}
@@ -438,10 +1392,25 @@ const ApplicationForm = () => {
                       </Link>
                     </label>
                   </div>
+                  <div>
+                    {errors["terms"] && (
+                      <em className="text-sm text-rose-400">
+                        Read and agree to the terms and conditions
+                      </em>
+                    )}
+                  </div>
                 </div>
                 <div className="flex items-center justify-center my-4">
-                  <button className="flex items-center font-semibold gap-3 px-8 py-2 border bg-[#FFB600] shadow rounded-3xl hover:bg-[#282e52] hover:border-[#282e52] hover:text-[#f7f7f7]">
-                    <span>Apply</span>
+                  <button
+                    disabled={isLoading}
+                    onClick={handleSubmit(onSubmit)}
+                    className="flex items-center font-semibold gap-3 px-8 py-2 border bg-[#FFB600] shadow rounded-3xl hover:bg-[#282e52] hover:border-[#282e52] hover:text-[#f7f7f7]"
+                  >
+                    {isLoading ? (
+                      <span>Submitting...</span>
+                    ) : (
+                      <span>Apply</span>
+                    )}
                   </button>
                 </div>
               </form>

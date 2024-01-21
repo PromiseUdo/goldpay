@@ -114,7 +114,7 @@ const Navbar = () => {
                   //   >
                   //     {page.title}
                   //     <span
-                  //       class={clsx(
+                  //       className={clsx(
                   //         "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ",
                   //         pathName === "/" ? "bg-[#f7f7f7]" : "bg-black"
                   //       )}
@@ -173,7 +173,7 @@ const Navbar = () => {
                   href={page.url}
                 >
                   {page.title}
-                  <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
                 </Link>
               </li>
             ))}
