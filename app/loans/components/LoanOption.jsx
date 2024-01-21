@@ -4,8 +4,8 @@ import React from "react";
 
 const LoanOption = ({ title, description, url, image }) => {
   return (
-    <div className="border flex border-[#d9d9d980] rounded-md gap-8 h-[13rem] px-4 py-4">
-      <div className="relative overflow-hidden rounded-md aspect-square h-full  w-[12rem]">
+    <div className="border flex border-[#d9d9d980] rounded-md gap-8 h-[fit-content] lg:h-[13rem] px-4 py-4">
+      <div className="hidden lg:block relative overflow-hidden rounded-md aspect-square h-[5rem] w-[12rem] lg:w-[12rem]">
         <Image
           src={image}
           alt="sme business man"
