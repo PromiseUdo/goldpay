@@ -403,10 +403,10 @@ const ApplicationForm = () => {
   }, []);
 
   return (
-    <div className="w-full my-32">
+    <div className="w-full my-8 md:my-16 lg:my-32">
       <Container>
         <div className="w-full flex flex-col items-center justify-center">
-          <div className="w-full flex justify-center gap-8 mb-8">
+          <div className="w-full flex flex-col md:flex-row items-center justify-center gap-4 lg:gap-8 mb-8">
             <div className="relative">
               <button
                 onClick={() => setLoanType("personal")}
@@ -443,9 +443,9 @@ const ApplicationForm = () => {
               )}
             </div>
           </div>
-          <div className="w-[50%] h-[50rem] shadow-lg pl-6 py-6 rounded-lg">
+          <div className="w-full lg:w-[50%] h-[50rem] shadow-lg  py-6 rounded-lg">
             <div className="overflow-y-auto h-full flex flex-col gap-2  scrollbar scrollbar-w-1   scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg scrollbar-thumb-green-500 scrollbar-track-gray-400">
-              <form className="flex flex-col gap-4">
+              <form className="flex flex-col px-3 md:px-6 gap-4">
                 <h3 className="text-xl font-medium ">Personal Information</h3>
                 <div>
                   <label className="text-sm flex items-center">
@@ -1379,10 +1379,7 @@ const ApplicationForm = () => {
                       type="checkbox"
                       className="w-4 h-4 rounded !text-[#FFB600]  border-2   hover:ring-0 focus:ring-0   "
                     />
-                    <label
-                      htmlFor="terms"
-                      className="text-sm select-none whitespace-nowrap"
-                    >
+                    <label htmlFor="terms" className="text-sm select-none">
                       I have read and accept the{" "}
                       <Link
                         href="/privacy-policy"
