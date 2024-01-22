@@ -6,6 +6,7 @@ import { RxDotFilled } from "react-icons/rx";
 import { setTimeout } from "timers";
 import { clsx } from "clsx";
 import Container from "./Container";
+import Link from "next/link";
 const slides = [
   {
     url: "/carousel1.jpg",
@@ -89,9 +90,12 @@ const Hero = () => {
             </div>
 
             <div className="flex mt-6 w-full justify-start  items-start gap-4">
-              <button className="shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base md:text-lg hover:bg-[#282e52] transition-all duration-100 font-semibold">
+              <Link
+                href="/application/loan"
+                className="shadow-md bg-[#FFB600] text-[black] hover:text-[#f7f7f7] px-4 py-2 rounded-3xl text-base md:text-lg hover:bg-[#282e52] transition-all duration-100 font-semibold"
+              >
                 {slideContent[currentIndex].buttonCaption}
-              </button>
+              </Link>
             </div>
           </Container>
         </div>
