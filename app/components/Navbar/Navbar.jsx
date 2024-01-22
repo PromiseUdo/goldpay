@@ -63,6 +63,8 @@ const Navbar = () => {
   const mobileNav = useRef(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [pathName, setPathname] = useState("/");
+  const [secondLevelDropDown, setSecondLevelDropdown] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState(null); // new state for active submenu
 
   useOnClickOutside(mobileNav, () => setIsActive(false));
   const handleScroll = () => {
@@ -158,14 +160,65 @@ const Navbar = () => {
           <ul className="flex flex-col ">
             {pages.map((page, idx) => (
               <li className="my-[0.4rem]  " key={idx}>
-                <Link
-                  onClick={() => setIsActive(false)}
-                  className="w-full pb-[0.5rem] text-[#f7f7f7] group  transition duration-300 "
-                  href={page.url}
-                >
-                  {page.title}
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
-                </Link>
+                {page.title === "Loans" ? (
+                  <>
+                    <a
+                      onClick={() => {
+                        setMobileDropdown(!mobileDropDown);
+                        setActiveSubMenu(null); // reset active submenu
+                      }}
+                      className="w-full pb-[0.5rem] text-[#f7f7f7] group  transition duration-300 cursor-pointer"
+                    >
+                      {page.title}
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                    </a>
+                    {mobileDropDown && (
+                      <ul className="pl-4">
+                        {page.submenu.map((submenuItem, subIdx) => (
+                          <li key={subIdx}>
+                            <a
+                              onClick={() =>
+                                setActiveSubMenu(submenuItem.title)
+                              } // set active submenu
+                              className="text-[#f7f7f7] group  transition duration-300 cursor-pointer"
+                            >
+                              {submenuItem.title}
+                              <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                            </a>
+                            {activeSubMenu === submenuItem.title &&
+                              submenuItem.submenu && (
+                                <ul className="pl-4">
+                                  {submenuItem.submenu.map(
+                                    (secondLevelItem, secondLevelIdx) => (
+                                      <li key={secondLevelIdx}>
+                                        <Link
+                                          onClick={() => setIsActive(false)}
+                                          className="text-[#f7f7f7] group  transition duration-300 cursor-pointer"
+                                          href={secondLevelItem.url}
+                                        >
+                                          {secondLevelItem.title}
+                                          <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                                        </Link>
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    onClick={() => setIsActive(false)}
+                    className="w-full pb-[0.5rem] text-[#f7f7f7] group  transition duration-300 "
+                    href={page.url}
+                  >
+                    {page.title}
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
+                  </Link>
+                )}
               </li>
             ))}
             <li className="bg-[#FFB600] mt-8 rounded-3xl text-black px-4 py-2  transition-all duration-100">
