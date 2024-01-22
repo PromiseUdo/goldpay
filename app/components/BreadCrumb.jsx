@@ -23,10 +23,7 @@ const BreadCrumb = ({ plainTextPages = [] }) => {
             {segment === "" ? "Home" : segment}
           </span>
         ) : (
-          <Link
-            className={clsx("hover:underline")}
-            href={`http://localhost:3000/${url}`}
-          >
+          <Link className={clsx("hover:underline")} href={`/${url}`}>
             {segment === "" ? "Home" : segment}
           </Link>
         )}
