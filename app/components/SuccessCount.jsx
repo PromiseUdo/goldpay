@@ -17,7 +17,7 @@ const SuccessCount = () => {
               <div className="text-[#f7f7f7] flex items-center gap-8">
                 <div className="flex flex-col gap-3">
                   <p className="text-xl md:text-2xl lg:text-5xl font-semibold">
-                    50K+
+                    420+
                   </p>
                   <p className="font-light">Active Customers</p>
                 </div>
@@ -26,9 +26,9 @@ const SuccessCount = () => {
                 </div>
                 <div className="flex flex-col gap-3">
                   <p className="text-xl md:text-2xl lg:text-5xl font-semibold">
-                    ₦100+
+                    ₦220+
                   </p>
-                  <p className="font-light">Billion credit processed</p>
+                  <p className="font-light">Million loans processed</p>
                 </div>
               </div>
             </div>

@@ -97,7 +97,7 @@ const Navbar = () => {
       )}
     >
       <Container>
-        <nav className="w-full h-[65px] flex items-center justify-between">
+        <nav className="w-full h-[53px] md:h-[65px] flex items-center justify-between">
           <Link className="h-[inherit] w-[110px]" href="/">
             <Image src={"/logo.png"} height={80} width={80} alt="logo" />
           </Link>
