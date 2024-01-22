@@ -12,7 +12,7 @@ const BreadCrumb = ({ plainTextPages = [] }) => {
 
   let url = "";
   const breadcrumbLinks = segments.map((segment, i) => {
-    url += `/${segment}`;
+    url += `${segment}`;
     const isLast = i === segments.length - 1;
     const isPlainText = plainTextPages.includes(segment);
 
