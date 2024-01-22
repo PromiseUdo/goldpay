@@ -9,7 +9,6 @@ const requirements = [
   "Two (2) Guarantors and their means of identification",
   "Proof of residence. i.e. House receipt/Shop or Rent Receipt",
   "Three (3) months Bank Statement",
-  ,
   "Means of Identification (e.g. NIN, Driver's licence, Passport)",
   "One Passport photograph",
 ];

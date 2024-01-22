@@ -9,10 +9,6 @@ import Testimonials from "../components/Testimonials";
 const page = () => {
   return (
     <div>
-      {/* <PageBanner
-        title="Get Loan For School Fees"
-        description="Get to know us better"
-      /> */}
       <BreadCrumb plainTextPages={["loans"]} />
       <PageIntro
         image="/loan-school-fees.jpg"
