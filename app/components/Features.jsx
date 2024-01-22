@@ -8,7 +8,7 @@ const Features = () => {
   return (
     <section className="w-full py-8 lg:py-12 ">
       <Container>
-        <div className="w-full flex flex-col lg:flex-row items-center justify-between h-full">
+        <div className="w-full gap-8 flex flex-col md:flex-row items-center justify-between h-full">
           <div className="flex flex-col gap-8">
             <div>
               <span className="text-2xl lg:text-4xl font-semibold  leading-relaxed text-[#505ca4]">
@@ -61,7 +61,7 @@ const Features = () => {
             </div>
           </div>
           {/* <div className="flex bg-red-400 items-center justify-center"> */}
-          <div className="bg-[#f2f2f2] h-[12rem] lg:h-[16rem] w-[100%] lg:w-[24rem] gap-6 lg:gap-12 flex flex-col justify-center px-4 lg:px-16">
+          <div className="bg-[#f2f2f2]  md:mt-0 h-[12rem] lg:h-[16rem] w-[100%] md:w-[24rem] gap-6 lg:gap-12 flex flex-col justify-center px-4 lg:px-16">
             <h2 className="text-2xl lg:text-4xl font-semibold text-[#505ca4]">
               Find a plan that works for you
             </h2>

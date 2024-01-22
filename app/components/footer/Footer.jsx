@@ -49,8 +49,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-3 lg:gap-0 items-start grow">
-            <div className="flex flex-col gap-4 grow">
+          <div className="0 w-full flex flex-col md:flex-row md:justify-center lg:justify-center gap-8 md:gap-16 lg:gap-12  items-start grow">
+            <div className="flex flex-col gap-4 ">
               <h2 className="text-xl lg:text-2xl font-medium">Our Company</h2>
               <div className="w-20  h-[2px] bg-[#FFB600]"></div>
 
@@ -61,10 +61,7 @@ const Footer = () => {
                     About
                   </Link>
                 </div>
-                <div className="flex items-center gap-1">
-                  <MdChevronRight />{" "}
-                  <span className=" cursor-pointer ">Community</span>
-                </div>
+
                 <div className="flex items-center gap-1">
                   <MdChevronRight />{" "}
                   <Link href="/careers" className="cursor-pointer ">
@@ -73,7 +70,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-4 grow">
+            <div className="flex flex-col gap-4 ">
               <h2 className="text-xl lg:text-2xl font-medium">
                 Office Locations
               </h2>
@@ -93,7 +90,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-4 grow">
+            <div className="flex flex-col gap-4 ">
               <h2 className="text-xl lg:text-2xl font-medium">
                 Help & Support
               </h2>

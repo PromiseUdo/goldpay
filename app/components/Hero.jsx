@@ -97,11 +97,11 @@ const Hero = () => {
         </div>
         {/* left arrow */}
         <div className="absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl shadow-sm rounded-full p-2 bg-white/20 hover:bg-[#c5c5c520] transition-all duration-100 text-white cursor-pointer">
-          <BsChevronCompactLeft onClick={prevSlide} size={30} />
+          <BsChevronCompactLeft onClick={prevSlide} size={20} />
         </div>
         {/* right arrow */}
-        <div className="absolute top-[50%] -translate-x-0 translate-y-[50%] right-5 text-2xl shadow-sm rounded-full p-2 bg-white/20 hover:bg-[#c5c5c520] transition-all duration-100 text-white cursor-pointer">
-          <BsChevronCompactRight onClick={nextSlide} size={30} />
+        <div className="absolute top-[50%] -translate-x-0 translate-y-[50%] right-5 text-base shadow-sm rounded-full p-2 bg-white/20 hover:bg-[#c5c5c520] transition-all duration-100 text-white cursor-pointer">
+          <BsChevronCompactRight onClick={nextSlide} size={20} />
         </div>
       </div>
 
