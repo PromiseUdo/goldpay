@@ -19,7 +19,7 @@ const LoanOption = ({ title, description, url, image }) => {
         <p>{description}</p>
         <div className="mt-1 w-full">
           <Link
-            href={url}
+            href={url ?? ""}
             className=" min-w-[150px] shadow-md bg-transparent border hover:border-[#282e52] border-[#FFB600] text-[black] px-4 py-2 rounded-md text-base  hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7] uppercase"
           >
             {"View Detail"}

@@ -201,7 +201,7 @@ const Navbar = () => {
                   <Link
                     onClick={() => setIsActive(false)}
                     className="w-full pb-[0.5rem] text-[#f7f7f7] group  transition duration-300 "
-                    href={page.url}
+                    href={page.url ?? ""}
                   >
                     {page.title}
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#f7f7f7]"></span>
