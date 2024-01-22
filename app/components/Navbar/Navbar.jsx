@@ -163,7 +163,7 @@ const Navbar = () => {
                     {mobileDropDown && (
                       <ul className="pl-4">
                         {page.submenu.map((submenuItem, subIdx) => (
-                          <li key={subIdx}>
+                          <li key={subIdx} className="my-1">
                             <a
                               onClick={() =>
                                 setActiveSubMenu(submenuItem.title)
