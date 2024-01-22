@@ -172,7 +172,7 @@ const Navbar = () => {
               <Link
                 onClick={() => setIsActive(false)}
                 href="/application/loan"
-                className="	font-semibold"
+                className="flex items-center justify-center	font-semibold"
               >
                 Apply
               </Link>

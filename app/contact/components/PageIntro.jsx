@@ -7,7 +7,7 @@ import { FaPhoneSquareAlt } from "react-icons/fa";
 
 const PageIntro = ({ image, title, descripton, url, button }) => {
   return (
-    <div className="flex w-full  mt-16 mb-8 justify-center items-center">
+    <div className="flex w-full mt-8 md:mt-16 mb-8 justify-center items-center">
       <Container>
         {/* <div className="flex items-center justify-center"> */}
         <div className=" w-[fit-content] gap-4 flex flex-col items-start h-full ">
