@@ -68,7 +68,6 @@ const Features = () => {
 
             <div>
               <Link
-                target="_blank"
                 className="flex items-center gap-2"
                 href="/application/loan"
               >
