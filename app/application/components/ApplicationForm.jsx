@@ -35,6 +35,9 @@ const ApplicationForm = () => {
   const [guarantorPassportImage2, setGuarantorPassportImage2] = useState();
   const [guarantorPassportImage1, setGuarantorPassportImage1] = useState();
   const [customerPassportImage, setCustomerPassportImage] = useState();
+  const [customerIdentificationImage, setCustomerIdentificationImage] =
+    useState();
+  const [proofOfResidenceImage, setProofOfResidenceImage] = useState();
   const router = useRouter();
   const {
     register,
@@ -65,6 +68,8 @@ const ApplicationForm = () => {
       customerPassport: "",
       guarantorName1: "",
       guarantorPhone1: "",
+      customerIdentification: "",
+      proofOfResidence: "",
       guarantorPassport1: "",
       guarantorName2: "",
       guarantorPhone2: "",
@@ -98,6 +103,12 @@ const ApplicationForm = () => {
   useEffect(() => {
     setCustomValue("cacDocument", cacDocument);
   }, [cacDocument]);
+  useEffect(() => {
+    setCustomValue("customerIdentification", customerIdentificationImage);
+  }, [customerIdentificationImage]);
+  useEffect(() => {
+    setCustomValue("proofOfResidence", proofOfResidenceImage);
+  }, [proofOfResidenceImage]);
 
   const onSubmit = async (data) => {
     setIsLoading(true);
@@ -105,6 +116,8 @@ const ApplicationForm = () => {
     let uploadedGuarantorImage1 = "";
     let uploadedGuarantorImage2 = "";
     let uploadedCacDocument = "";
+    let uploadedCustomerIdentificationImage = "";
+    let uploadedProofOfResidenceImage = "";
 
     console.log(data, "<<<<<<<<<<<<<<<<<<data");
 
@@ -255,6 +268,108 @@ const ApplicationForm = () => {
             );
           });
         }
+
+        if (data.customerIdentification) {
+          const fileName =
+            new Date().getTime() + "-" + data.customerIdentification.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(
+            storageRef,
+            data.customerIdentification
+          );
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log(
+                  "Error uploading customer identification image",
+                  error
+                );
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedCustomerIdentificationImage = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+        if (data.proofOfResidence) {
+          const fileName =
+            new Date().getTime() + "-" + data.proofOfResidence.name;
+          const storage = getStorage(firebaseApp);
+          const storageRef = ref(storage, `customer/${fileName}`);
+          const uploadTask = uploadBytesResumable(
+            storageRef,
+            data.proofOfResidence
+          );
+
+          await new Promise((resolve, reject) => {
+            uploadTask.on(
+              "state_changed",
+              (snapshot) => {
+                const progress =
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log("Upload is " + progress + "% done");
+                switch (snapshot.state) {
+                  case "paused":
+                    console.log("Upload is paused");
+                    break;
+                  case "running":
+                    console.log("Upload is running");
+                    break;
+                }
+              },
+              (error) => {
+                // Handle unsuccessful uploads
+                console.log(
+                  "Error uploading customer identification image",
+                  error
+                );
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                  .then((downloadURL) => {
+                    uploadedProofOfResidenceImage = downloadURL;
+
+                    console.log("File available at", downloadURL);
+                    resolve();
+                  })
+                  .catch((error) => {
+                    console.log("error getting the download URL", error);
+                    reject(error);
+                  });
+              }
+            );
+          });
+        }
+
         if (data.cacDocument) {
           const fileName = new Date().getTime() + "-" + data.cacDocument.name;
           const storage = getStorage(firebaseApp);
@@ -313,6 +428,8 @@ const ApplicationForm = () => {
       guarantorPassport1: uploadedGuarantorImage1,
       guarantorPassport2: uploadedGuarantorImage2,
       cacDocument: uploadedCacDocument,
+      customerIdentification: uploadedCustomerIdentificationImage,
+      proofOfResidence: uploadedProofOfResidenceImage,
       role: "CUSTOMER",
       websiteReg: true,
     };
@@ -352,6 +469,8 @@ const ApplicationForm = () => {
       setGuarantorPassportImage2(null);
       setCustomerPassportImage(null);
       setGuarantorPassportImage1(null);
+      setProofOfResidenceImage(null);
+      setCustomerIdentificationImage(null);
       setCacDocument(null);
       setIsCustomerCreated(false);
     }
@@ -379,6 +498,22 @@ const ApplicationForm = () => {
   const removeCustomerPassportFromState = useCallback((value) => {
     setCustomerPassportImage(null);
   }, []);
+
+  const addCustomerIdentificationToState = useCallback((value) => {
+    setCustomerIdentificationImage(value);
+  }, []);
+
+  const removeCustomerIdentificationFromState = useCallback((value) => {
+    setCustomerIdentificationImage(null);
+  }, []);
+  const addProofOfResidenceToState = useCallback((value) => {
+    setProofOfResidenceImage(value);
+  }, []);
+
+  const removeProofOfResidenceFromState = useCallback((value) => {
+    setProofOfResidenceImage(null);
+  }, []);
+
   const addGuarantorPassport1ToState = useCallback((value) => {
     setGuarantorPassportImage1(value);
   }, []);
@@ -678,6 +813,40 @@ const ApplicationForm = () => {
                     />
                   </div>
                 </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <div className="block">
+                      <SelectImage
+                        item={null}
+                        addImageToState={addCustomerIdentificationToState}
+                        removeImageFromState={
+                          removeCustomerIdentificationFromState
+                        }
+                        isUserCreated={false}
+                        label="Customer Identification"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-xs">
+                    NIN, Driver&apos;s licence or passport
+                  </p>
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <div className="block">
+                      <SelectImage
+                        item={null}
+                        addImageToState={addProofOfResidenceToState}
+                        removeImageFromState={removeProofOfResidenceFromState}
+                        isUserCreated={false}
+                        label="Proof of Residence"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-xs">Utility bill or rent receipt</p>
+                </div>
+
                 <div>
                   <label className="text-sm flex items-center">
                     <span>Date Of Birth</span>

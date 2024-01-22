@@ -31,7 +31,7 @@ const otherLoanOptions = [
   {
     title: "Cash Advance",
     description:
-      "Access instant funds when you need them most with our Cash Advance service, providing quick access to funds when you need them.",
+      "Access instant funds when you need them most with our Cash Advance service, providing quick access to funds.",
     url: "/application/loan",
     image: "/cashadvance.jpg",
   },

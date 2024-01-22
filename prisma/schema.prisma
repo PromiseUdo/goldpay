@@ -66,6 +66,8 @@ model Customer {
   businessPhone String?
   creditLimit Float?
   howYouHeard String?
+  customerIdentification String?
+  proofOfResidence String?
   businessType String?
   businessAddress   String?
   businessEmail   String?

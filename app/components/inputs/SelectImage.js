@@ -48,7 +48,7 @@ const SelectImage = ({
       <div className="flex flex-row gap-2 items-center py-1 h-[fit-content]">
         <label
           htmlFor={label}
-          className="flex items-center font-medium cursor-pointer"
+          className="text-sm  flex items-center  cursor-pointer"
         >
           <span> {label}</span>
           <LuAsterisk color="#D22B2B" />
