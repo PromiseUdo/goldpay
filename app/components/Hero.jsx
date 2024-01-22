@@ -100,7 +100,7 @@ const Hero = () => {
           </Container>
         </div>
         {/* left arrow */}
-        <div className="hidde lg:block absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl shadow-sm rounded-full p-2 bg-white/20 hover:bg-[#c5c5c520] transition-all duration-100 text-white cursor-pointer">
+        <div className="hidden lg:block absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl shadow-sm rounded-full p-2 bg-white/20 hover:bg-[#c5c5c520] transition-all duration-100 text-white cursor-pointer">
           <BsChevronCompactLeft onClick={prevSlide} size={20} />
         </div>
         {/* right arrow */}
