@@ -15,7 +15,7 @@ const PageIntro = ({ image, title, descripton, url, button }) => {
           <p className="max-w-lg text-[#1e1c1c]">{descripton}</p>
           {!button && (
             <Link
-              href="/"
+              href="/application/loan"
               className=" flex items-center gap-2 min-w-[150px] shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base md:text-lg hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7]"
             >
               <FiExternalLink />

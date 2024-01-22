@@ -18,22 +18,22 @@ const otherLoanOptions = [
   {
     title: "Loan for SMEs",
     description:
-      " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
+      "Fuel the growth of your small or medium-sized enterprise with our tailored SME Loan solutions",
     url: "/loans/loan-for-sme",
     image: "/sme.jpg",
   },
   {
     title: "Loan for School Fees",
     description:
-      " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
+      "Get a loan for your education with ease. Flexible repayment options and competitive interest rates.",
     url: "/loans/loan-for-sme",
     image: "/loan-school-fees.jpg",
   },
   {
     title: "Cash Advance",
     description:
-      " Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non,voluptate.",
-    url: "/loans/cash-advance",
+      "Access instant funds when you need them most with our Cash Advance service, providing quick access to funds when you need them.",
+    url: "/application/loan",
     image: "/cashadvance.jpg",
   },
 ];

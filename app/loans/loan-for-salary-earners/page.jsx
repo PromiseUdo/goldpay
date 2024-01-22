@@ -12,9 +12,7 @@ const page = () => {
       <PageIntro
         image="/salary.avif"
         title="Loan for Salary Earners"
-        descripton="Get a loan for your education with ease. Flexible repayment
-              options and competitive interest rates. Apply now to achieve your
-              academic goals."
+        descripton="Empower your financial journey with our specialized Salary Earners Loan tailored to meet the unique needs of working professionals."
         button={true}
       />
       <PageContent />

@@ -1,9 +1,10 @@
 import { clsx } from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { MdChevronRight } from "react-icons/md";
 
-const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
+const Businsess = ({ image, title, desc, list, buttonCaption, row, url }) => {
   return (
     <div
       className={clsx(
@@ -39,9 +40,12 @@ const Businsess = ({ image, title, desc, list, buttonCaption, row }) => {
           </ul>
         </div>
         <div>
-          <button className="mt-3 min-w-[150px] shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base md:text-lg hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7]">
+          <Link
+            href={url}
+            className="mt-3 min-w-[150px] shadow-md bg-[#FFB600] text-[black] px-4 py-2 rounded-3xl text-base md:text-lg hover:bg-[#282e52] transition-all duration-100 font-semibold hover:text-[#f7f7f7]"
+          >
             {buttonCaption}
-          </button>
+          </Link>
         </div>
       </div>
     </div>

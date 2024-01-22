@@ -12,9 +12,7 @@ const page = () => {
       <PageIntro
         image="/sme.jpg"
         title="Loan for SMEs"
-        descripton="Get a loan for your education with ease. Flexible repayment
-          options and competitive interest rates. Apply now to achieve your
-          academic goals."
+        descripton="Fuel the growth of your small or medium-sized enterprise with our tailored SME Loan solutions"
         button={true}
       />
       <PageContent />

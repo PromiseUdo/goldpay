@@ -14,6 +14,7 @@ const businesses = [
       "Cash advance",
     ],
     buttonCaption: "Apply Now",
+    url: "/application/loan",
   },
   {
     image: "/investment.jpg",
@@ -22,6 +23,7 @@ const businesses = [
     list: [],
     buttonCaption: "Learn More",
     row: true,
+    url: "/contact",
   },
   {
     image: "/lady.jpg",
@@ -29,6 +31,7 @@ const businesses = [
     desc: " Our investment company offers expert business consultancy services to help our clients grow and succeed. Our team of experienced consultants provides personalized advice and guidance to help you make informed business decisions and achieve your goals. Whether you need help with business strategy, financial management, or any other aspect of your business, we are here to help. ",
     list: [],
     buttonCaption: "Learn More",
+    url: "/contact",
   },
 ];
 
@@ -52,6 +55,7 @@ const Businesses = () => {
                 list={_.list}
                 row={_.row}
                 buttonCaption={_.buttonCaption}
+                url={_.url}
               />
             ))}
           </div>
