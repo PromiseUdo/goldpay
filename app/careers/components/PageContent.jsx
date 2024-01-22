@@ -14,11 +14,11 @@ const PageContent = () => {
             className="object-contain"
             alt="job_hunt_gif"
           />
-          <h4 className="text-4xl font-semibold">
+          <h4 className="text-center text-2xl lg:text-4xl font-semibold">
             Thank you for your interest in working with Us.
           </h4>
 
-          <p className="">
+          <p className="text-center">
             Unfortunately, there are no open positions at this time
           </p>
         </div>
