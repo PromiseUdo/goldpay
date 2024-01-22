@@ -159,6 +159,7 @@ const Navbar = () => {
             {pages.map((page, idx) => (
               <li className="my-[0.4rem]  " key={idx}>
                 <Link
+                  onClick={() => setIsActive(false)}
                   className="w-full pb-[0.5rem] text-[#f7f7f7] group  transition duration-300 "
                   href={page.url}
                 >
@@ -168,7 +169,11 @@ const Navbar = () => {
               </li>
             ))}
             <li className="bg-[#FFB600] mt-8 rounded-3xl text-black px-4 py-2  transition-all duration-100">
-              <Link href="/application/loan" className="	font-semibold">
+              <Link
+                onClick={() => setIsActive(false)}
+                href="/application/loan"
+                className="	font-semibold"
+              >
                 Apply
               </Link>
             </li>
