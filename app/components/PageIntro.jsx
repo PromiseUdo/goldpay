@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 
-const PageIntro = ({ image, title, descripton, url, button }) => {
+const PageIntro = ({ image, title, descripton, button }) => {
   return (
     <div className="flex w-full my-4 md:my-8 lg:my-16 justify-center items-center">
       <Container>
