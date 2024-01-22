@@ -8,7 +8,7 @@ const posts = [
   {
     image: "/sme.jpg",
     title: "Debt-Free Journey: Start 2024 With These Tips",
-    description: "Read aboutdebt snowball and debt avalanche methods...",
+    description: "Read about debt snowball and debt avalanche methods...",
     date: "",
   },
   {

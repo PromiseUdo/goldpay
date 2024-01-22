@@ -8,22 +8,19 @@ const posts = [
   {
     title: "FINANCIAL TIPS: make your worries go away",
     image: "/worry.jpg",
-    snippet:
-      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+    snippet: "Unlock the secrets to effective salary saving with...",
     url: "/",
   },
   {
     title: "maybe it's time to get a new car",
     image: "/carbreakdown.jpg",
-    snippet:
-      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+    snippet: "A Financial Roadmap for Every Life Stage...",
     url: "/",
   },
   {
     title: "how we can help you get that home",
     image: "/newhome.jpg",
-    snippet:
-      "Lorem, Repellendus modi numquam recusandae? Explicabo quo fugiat enim eum ad ab commodi?...",
+    snippet: "In today's fast-paced world, mastering your financial habits....",
     url: "/",
   },
 ];
