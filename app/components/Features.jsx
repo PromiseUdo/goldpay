@@ -55,7 +55,7 @@ const Features = () => {
                   alt="options icon"
                 />
                 <span className="text-sm text-center lg:text-start  font-semibold">
-                  Financing up to ₦5 billion
+                  Financed up to ₦300 million
                 </span>
               </div>
             </div>
