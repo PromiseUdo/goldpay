@@ -147,7 +147,7 @@ const Navbar = () => {
             </Link> */}
 
             <Link className="h-[inherit] w-[110px]" href="/">
-              <Image src={"/logo.png"} height={60} width={60} alt="logo" />
+              <Image src={"/logo.png"} height={75} width={75} alt="logo" />
             </Link>
             <button className="text-[1.2rem] flex items-center justify-center">
               <FaTimes onClick={() => setIsActive(false)} color="#f7f7f7" />
