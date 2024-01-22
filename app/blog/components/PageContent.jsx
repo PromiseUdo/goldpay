@@ -43,20 +43,20 @@ const PageContent = () => {
   return (
     <div className="w-full">
       <Container>
-        <div className="w-full  grid grid-custom-reverse py-8 px-8 gap-5">
-          <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
-            {posts.map((post, i) => (
-              <BlogPostCard
-                image={post.image}
-                title={post.title}
-                description={post.description}
-                key={i}
-                date={post.date}
-              />
-            ))}
-          </div>
+        <div className="w-full  grid  grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 py-8 lg:px-8 gap-5">
+          {/* <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3"> */}
+          {posts.map((post, i) => (
+            <BlogPostCard
+              image={post.image}
+              title={post.title}
+              description={post.description}
+              key={i}
+              date={post.date}
+            />
+          ))}
+          {/* </div> */}
 
-          <div className="h-[fit-content] w-full bg-[#f7f7f7] shadow-md rounded-lg px-4 py-8 flex flex-col gap-2">
+          {/* <div className="hidden lg:flex h-[fit-content] w-full bg-[#f7f7f7] shadow-md rounded-lg px-4 py-8  flex-col gap-2">
             <div className="flex items-center gap-4">
               <div className="border flex items-center border-solid border-[#d9d9d980] h-10 px-2 py-2 gap-2 rounded-md outline-none">
                 <IoMdSearch color="#979797" />
@@ -86,7 +86,7 @@ const PageContent = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>
