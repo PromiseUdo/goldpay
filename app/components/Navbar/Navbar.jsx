@@ -130,24 +130,12 @@ const Navbar = () => {
       <div
         ref={mobileNav}
         className={clsx(
-          "border-r border-t border-b border-[#f7f7f750] fixed top-0 left-0 z-20 w-[70%] h-[100vh] bg-[#202441] transition-all duration-100 ease-in-out",
+          "border-r border-t border-b border-[#f7f7f750] fixed top-0 left-0 z-20 w-[75%] h-[100vh] bg-[#202441] transition-all duration-100 ease-in-out",
           !isActive && "translate-x-[-100%]"
         )}
       >
         <nav className="p-[2rem] h-[100vh] w-[100%]">
           <div className="flex items-center justify-between w-full border-b border-[#727272] pb-[2rem] mb-[2rem]  logo-close-container">
-            {/* <Link className="h-[70px] w-[70px]" href="/">
-              <div
-                className="logo  h-[70px] w-[70px]"
-                style={{
-                  background: "url('/logo.png')",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }}
-              />
-            </Link> */}
-
             <Link className="h-[inherit] w-[110px]" href="/">
               <Image src={"/logo.png"} height={75} width={75} alt="logo" />
             </Link>
@@ -190,10 +178,10 @@ const Navbar = () => {
                                 <ul className="pl-4">
                                   {submenuItem.submenu.map(
                                     (secondLevelItem, secondLevelIdx) => (
-                                      <li key={secondLevelIdx}>
+                                      <li key={secondLevelIdx} className="my-1">
                                         <Link
                                           onClick={() => setIsActive(false)}
-                                          className="text-[#f7f7f7] group  transition duration-300 cursor-pointer"
+                                          className="text-[#f7f7f7] text-sm group  transition duration-300 cursor-pointer"
                                           href={secondLevelItem.url}
                                         >
                                           {secondLevelItem.title}
