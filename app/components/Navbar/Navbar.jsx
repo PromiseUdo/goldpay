@@ -107,25 +107,11 @@ const Navbar = () => {
                 const depthLevel = 0;
                 return (
                   <MenuItems items={page} key={idx} depthLevel={depthLevel} />
-                  // <li key={idx}>
-                  //   <Link
-                  //     className="font-extralight	 group  transition duration-300"
-                  //     href={page.url}
-                  //   >
-                  //     {page.title}
-                  //     <span
-                  //       className={clsx(
-                  //         "block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ",
-                  //         pathName === "/" ? "bg-[#f7f7f7]" : "bg-black"
-                  //       )}
-                  //     ></span>
-                  //   </Link>
-                  // </li>
                 );
               })}
               <li className="bg-[#FFB600] rounded-3xl text-black px-4 py-2  transition-all duration-100">
-                <Link href="/careers" className="	font-semibold">
-                  Join Us
+                <Link href="/application/loan" className="	font-semibold">
+                  Apply{" "}
                 </Link>
               </li>
             </ul>
@@ -142,22 +128,26 @@ const Navbar = () => {
       <div
         ref={mobileNav}
         className={clsx(
-          "border-r border-t border-b border-[#f7f7f750] fixed top-0 left-0 z-20 w-[60%] h-[100vh] bg-[#505ca4] transition-all duration-100 ease-in-out",
+          "border-r border-t border-b border-[#f7f7f750] fixed top-0 left-0 z-20 w-[70%] h-[100vh] bg-[#202441] transition-all duration-100 ease-in-out",
           !isActive && "translate-x-[-100%]"
         )}
       >
         <nav className="p-[2rem] h-[100vh] w-[100%]">
-          <div className="flex items-center justify-between w-full border-b border-[#f7f7f7] pb-[1rem] mb-[2rem]  logo-close-container">
-            <Link className="h-[70px] w-[70px]" href="/">
+          <div className="flex items-center justify-between w-full border-b border-[#727272] pb-[2rem] mb-[2rem]  logo-close-container">
+            {/* <Link className="h-[70px] w-[70px]" href="/">
               <div
-                className="logo bg-red-500 h-[70px] w-[70px]"
+                className="logo  h-[70px] w-[70px]"
                 style={{
-                  background: "url('/logo.jpeg')",
+                  background: "url('/logo.png')",
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                 }}
               />
+            </Link> */}
+
+            <Link className="h-[inherit] w-[110px]" href="/">
+              <Image src={"/logo.png"} height={60} width={60} alt="logo" />
             </Link>
             <button className="text-[1.2rem] flex items-center justify-center">
               <FaTimes onClick={() => setIsActive(false)} color="#f7f7f7" />
@@ -177,8 +167,10 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            <li className="bg-[#f7f7f7] mt-[0.4rem] rounded-md text-[#505ca4] hover:bg-[#c5c5c5] transition-all duration-100 px-4 py-2">
-              <Link href="/about">Get Involved</Link>
+            <li className="bg-[#FFB600] mt-8 rounded-3xl text-black px-4 py-2  transition-all duration-100">
+              <Link href="/application/loan" className="	font-semibold">
+                Apply
+              </Link>
             </li>
           </ul>
         </nav>
