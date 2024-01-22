@@ -43,7 +43,7 @@ const PageContent = () => {
   return (
     <div className="w-full">
       <Container>
-        <div className="w-full  grid  grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 py-8 lg:px-8 gap-5">
+        <div className="w-full  grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 py-8 lg:px-8 gap-5">
           {/* <div className="h-[fit-content]  rounded-lg w-full gap-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3"> */}
           {posts.map((post, i) => (
             <BlogPostCard
