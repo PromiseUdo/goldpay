@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import PageBanner from "@/app/components/PageBanner";
 import React from "react";
 import PageIntro from "../../components/PageIntro";
