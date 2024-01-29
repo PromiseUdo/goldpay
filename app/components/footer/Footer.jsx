@@ -30,7 +30,7 @@ const Footer = () => {
               </h3>
               <div className="flex items-center gap-2">
                 <FaPhone />
-                <span className="">08142555121</span>
+                <span className="">08148232644</span>
               </div>
               <div className="flex items-center gap-2">
                 <MdEmail />

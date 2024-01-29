@@ -32,7 +32,7 @@ const CommunicationChannels = () => {
                 </div>
 
                 <div className="flex  flex-col gap-1 items-end">
-                  <span className="font-light">08142555121 </span>
+                  <span className="font-light">09035146172</span>
                 </div>
               </div>
 
